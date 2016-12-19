@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Spotch.Pages.MessageDetail">
+
+  <ContentPage.Content>
+
+    <StackLayout x:Name="messageView">
+      <Label Text="{Binding text}"
+             TextColor="#333"
+             FontSize="30"/>
+      <Label Text="{Binding time}"
+             TextColor="#333"
+             FontSize="30"/>
+
+    </StackLayout>
+
+
+  </ContentPage.Content>
+</ContentPage>
