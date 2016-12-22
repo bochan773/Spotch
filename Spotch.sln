@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotch.Windows", "Spotch\Sp
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Spotch\Spotch\Spotch.projitems*{139c3444-fe6c-482b-9d1e-fca46b2a11e2}*SharedItemsImports = 4
+		Spotch\Spotch\Spotch.projitems*{29cd4f27-901b-4f02-8bcf-d1591690b54a}*SharedItemsImports = 4
 		Spotch\Spotch\Spotch.projitems*{3cbce775-9129-4f05-a2c7-5e2cf6446add}*SharedItemsImports = 4
 		Spotch\Spotch\Spotch.projitems*{a7e1389d-a442-4eba-b93a-ab6501ffe213}*SharedItemsImports = 4
 		Spotch\Spotch\Spotch.projitems*{f037e873-7535-4d50-8b89-2a7be95b7ddd}*SharedItemsImports = 13

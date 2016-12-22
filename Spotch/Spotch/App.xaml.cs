@@ -9,7 +9,7 @@ namespace Spotch
 		{
 			InitializeComponent();
 
-			MainPage = new Spotch.View.MainPage();
+			MainPage = new Spotch.View.TopPage();
 		}
 
 		protected override void OnStart ()

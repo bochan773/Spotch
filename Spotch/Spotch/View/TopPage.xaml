@@ -2,8 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Spotch.View.TopPage">
-
-
   <AbsoluteLayout VerticalOptions="FillAndExpand"
                    HorizontalOptions="FillAndExpand">
 
@@ -20,14 +18,16 @@
                 TextColor="#fff"
                 Margin="0,100,0,150"/>
 
-        <Button Text="Sign Up"
+        <Button x:Name="SignupBtn"
+                Text="Sign Up"
                 HorizontalOptions="Center"
                 BackgroundColor="#40a0a0"
                 TextColor="#fff"
                 WidthRequest="150"
                 HeightRequest="60"/>
 
-        <Button Text="Login"
+        <Button x:Name="LoginBtn"
+                Text="Login"
                 HorizontalOptions="Center"
                 BackgroundColor="#40a040"
                 TextColor="#fff"
@@ -45,5 +45,4 @@
     </ScrollView>
 
   </AbsoluteLayout>
-
 </ContentPage>
