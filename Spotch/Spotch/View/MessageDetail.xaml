@@ -15,6 +15,7 @@
              TextColor="#444"
              FontSize="24"/>
       <maps:Map x:Name="map"
+                IsShowingUser="true"
                 VerticalOptions="FillAndExpand"/>
     </StackLayout>
 
