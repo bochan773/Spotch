@@ -8,6 +8,7 @@ namespace Spotch.Controller
 {
     class MapManager
     {
+        /*
         private readonly Map _map;
         public MapManager(Map map)
         {
@@ -50,5 +51,6 @@ namespace Spotch.Controller
             var mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromMiles(regionRadius));
             this._map.MoveToRegion(mapSpan);
         }
+        */
     }
 }

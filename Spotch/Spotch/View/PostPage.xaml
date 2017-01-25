@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Spotch.View.PostPage"
-             BackgroundColor="#88ff8888">
+             BackgroundColor="#50505050">
 	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
 
   <ContentPage.Padding>
@@ -10,19 +10,25 @@
   </ContentPage.Padding>
 
   <ContentPage.Content>
-    <StackLayout BackgroundColor="#4080a0">
-      <Entry x:Name="textInput"
-              Placeholder="ここに何か書いてください..."
-              TextColor="#fff"
-              WidthRequest="100"
-              HeightRequest="50"
-              Keyboard="Chat"/>
-      <Button Text="送信"
-              BackgroundColor="#40a0a0"
-              TextColor="#fff"
-              WidthRequest="80"
-              HeightRequest="50"
-              Clicked="OnSendTapped"/>
+    <StackLayout>
+
+      <StackLayout Orientation="Vertical" VerticalOptions="End" BackgroundColor="#4080a0">
+        
+        <Entry x:Name="textInput"
+               Placeholder="ここに何か書いてください..."
+               TextColor="#fff"
+               WidthRequest="100"
+               HeightRequest="50"
+               Keyboard="Chat"/>
+        
+        <Button Text="送信"
+                BackgroundColor="#40a0a0"
+                TextColor="#fff"
+                WidthRequest="80"
+                HeightRequest="50"
+                Clicked="OnSendTapped"/>
+      </StackLayout>
+
     </StackLayout>
   </ContentPage.Content>
   

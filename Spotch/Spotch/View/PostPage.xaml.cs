@@ -27,7 +27,7 @@ namespace Spotch.View
             //messageView.ItemsSource = posts;
         }
 
-        void OnSendTapped(object sender, EventArgs args)
+        async void OnSendTapped(object sender, EventArgs args)
         {
             if (textInput.Text == null)
             {
@@ -35,16 +35,18 @@ namespace Spotch.View
             }
             if (textInput.Text.Length != 0)
             {
-                //var lm = new Controller.GeoManager();
-                //var p = new Position(lm.position.Latitude, lm.position.Longitude);
-                //position = new double[] { p.Latitude, p.Longitude }
+                // Current Location
+                Controller.GeoManager gm = new Controller.GeoManager();
+                // Cast Geolocator.Abstruction.Position -> GoogleMaps.Position
+                // Xamarin.Forms.GoogleMaps.Position p = gm.getCurrentLocation();
+                Xamarin.Forms.GoogleMaps.Position p = await gm.getCurrent();
 
-
-
+                // Post
                 posts.Add(new Post
                 {
                     text = textInput.Text,
-                    time = DateTime.Now
+                    time = DateTime.Now,
+                    position = p
                 });
 
                 textInput.Text = "";

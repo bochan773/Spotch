@@ -9,7 +9,7 @@ namespace Spotch.View
 {
     public partial class MessageDetail : ContentPage
 	{
-        public Position location = new Position(35.6691088, 139.6012966);　// Default Location : Tokyo
+        public Position location = new Position(35, 139);　// Default Location : Tokyo
 
         public MessageDetail(Post post)
         {

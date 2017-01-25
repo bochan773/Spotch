@@ -33,7 +33,6 @@
                 <Label Text="{Binding time}"
                        TextColor="#CCC" />
               </StackLayout>
-              <!--<TapGestureRecognizer Tapped="SelectItem" />-->
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>

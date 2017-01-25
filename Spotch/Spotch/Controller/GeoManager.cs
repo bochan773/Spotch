@@ -1,27 +1,39 @@
 ﻿
 using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Spotch.Controller
 {
     class GeoManager
     {
-        /* Plugin.Geolocator.Abstractions
-        public Position position = null;
-        
-        async void currentLocation()
+        /* Plugin.Geolocator.Abstractions */
+        public Plugin.Geolocator.Abstractions.Position geo_position;
+        public Xamarin.Forms.GoogleMaps.Position google_position;
+
+        // return CurrentPosition
+        public async Task<Xamarin.Forms.GoogleMaps.Position> getCurrent()
         {
-            IGeolocator locator = CrossGeolocator.Current;
+            Plugin.Geolocator.Abstractions.IGeolocator locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50; // <- 1. 50mの精度に指定
 
-            Position position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+            geo_position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+            google_position = convertPosition(geo_position);
 
-            Console.WriteLine("Position Status: {0}", position.Timestamp);
-            Console.WriteLine("Position Latitude: {0}", position.Latitude);
-            Console.WriteLine("Position Longitude: {0}", position.Longitude);
-            
-        }*/
+            return google_position;
+        }
+        
+        // Convert Geolocator.Abstractions.Position to GoogleMaps.Position
+        public Xamarin.Forms.GoogleMaps.Position convertPosition(Plugin.Geolocator.Abstractions.Position instance)
+        {
+            Xamarin.Forms.GoogleMaps.Position p = 
+                new Xamarin.Forms.GoogleMaps.Position(
+                    instance.Latitude,
+                    instance.Longitude
+                    );
+            return p;
+        }
 
     }
 }

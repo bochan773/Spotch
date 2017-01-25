@@ -8,6 +8,7 @@
 
   <ContentPage.Content>
     <StackLayout x:Name="messageView">
+      
       <Label Text="{Binding time}"
              TextColor="#888"
              FontSize="10"/>
@@ -15,27 +16,17 @@
              TextColor="#444"
              FontSize="24"
              HeightRequest="80"/>
+      <Label Text="{Binding position.Latitude}"
+             TextColor="#888"
+             FontSize="10"/>
+      <Label Text="{Binding position.Longitude}"
+             TextColor="#888"
+             FontSize="10"/>
       
       <maps:Map x:Name="MyMap"
                 IsShowingUser="true"
                 VerticalOptions="FillAndExpand">
       </maps:Map>
-
-      <!--
-      <ExtendedMap x:Name="map" 
-                   Grid.Row="2" 
-                   HorizontalOptions="Fill" 
-                   VerticalOptions="Fill" 
-                   IsVisible="{Binding CustomerSearchControlViewModel.MapIsDisplayed}">
-        <ExtendedMap.StaticPins>
-          <x:Array Type="{x:Type maps:Pin}">
-            <maps:Pin Label="{Binding Customer.Name}" 
-                      Address="{Binding Address, Converter={StaticResource AddressToStringConverter}" 
-                      Position="{Binding Customer.Position}"/>
-          </x:Array>
-        </ExtendedMap.StaticPins>
-      </ExtendedMap>
-      -->
       
     </StackLayout>
   </ContentPage.Content>
