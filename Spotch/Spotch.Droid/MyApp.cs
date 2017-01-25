@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace Spotch.Droid
 {
+    /*
     [Application]
     [MetaData("com.google.android.maps.v2.API_KEY", Value="AIzaSyBmYxRTWQ0q4U8oiUXWYAbVApIgQGdJyl4")]
     public class MyApp : Application
@@ -21,4 +22,5 @@ namespace Spotch.Droid
         {
         }
     }
+    */
 }

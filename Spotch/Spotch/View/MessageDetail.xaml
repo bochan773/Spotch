@@ -5,22 +5,38 @@
              xmlns:local="clr-namespace:Spotch"
              x:Class="Spotch.View.MessageDetail">
 
-  <ContentPage.Content>
 
+  <ContentPage.Content>
     <StackLayout x:Name="messageView">
       <Label Text="{Binding time}"
              TextColor="#888"
              FontSize="10"/>
       <Label Text="{Binding text}"
              TextColor="#444"
-             FontSize="24"/>
-      <maps:Map x:Name="map"
+             FontSize="24"
+             HeightRequest="80"/>
+      
+      <maps:Map x:Name="MyMap"
                 IsShowingUser="true"
-                VerticalOptions="FillAndExpand"/>
+                VerticalOptions="FillAndExpand">
+      </maps:Map>
+
+      <!--
+      <ExtendedMap x:Name="map" 
+                   Grid.Row="2" 
+                   HorizontalOptions="Fill" 
+                   VerticalOptions="Fill" 
+                   IsVisible="{Binding CustomerSearchControlViewModel.MapIsDisplayed}">
+        <ExtendedMap.StaticPins>
+          <x:Array Type="{x:Type maps:Pin}">
+            <maps:Pin Label="{Binding Customer.Name}" 
+                      Address="{Binding Address, Converter={StaticResource AddressToStringConverter}" 
+                      Position="{Binding Customer.Position}"/>
+          </x:Array>
+        </ExtendedMap.StaticPins>
+      </ExtendedMap>
+      -->
+      
     </StackLayout>
-
-
   </ContentPage.Content>
-  
-  
 </ContentPage>

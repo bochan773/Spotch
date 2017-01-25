@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\GeoManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MyViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
@@ -28,6 +29,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\MessageDetail.xaml.cs">
       <DependentUpon>MessageDetail.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\PostPage.xaml.cs">
+      <DependentUpon>PostPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\SignupPage.xaml.cs">
@@ -100,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\SignupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\PostPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

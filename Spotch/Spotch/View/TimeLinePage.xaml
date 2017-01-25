@@ -4,11 +4,16 @@
              x:Class="Spotch.View.TimeLinePage"
              Title="TimeLine">
 
-
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
 
+  <ContentPage.ToolbarItems>
+    <!-- Clicked="OnPostTapped" -->
+    <!-- Activated="OnPostTapped" Order="Primary" Priority="0" -->
+    <!-- Command="{Binding OnPostTapped}" -->
+    <ToolbarItem Text="Post" Clicked="OnPostTapped"/>
+  </ContentPage.ToolbarItems>
 
   <ContentPage.Content>
     <StackLayout>
@@ -34,6 +39,7 @@
         </ListView.ItemTemplate>
       </ListView>
 
+      
       <StackLayout Orientation="Vertical" VerticalOptions="End" BackgroundColor="#4080a0">
         <Entry x:Name="textInput"
                Placeholder="ここに何か書いてください..."
@@ -48,9 +54,8 @@
                 HeightRequest="50"
                 Clicked="OnSendTapped"/>
       </StackLayout>
+
+      
     </StackLayout>
-    
   </ContentPage.Content>
-  
-  
 </ContentPage>
