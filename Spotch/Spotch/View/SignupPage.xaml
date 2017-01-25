@@ -6,14 +6,20 @@
     <StackLayout VerticalOptions="Center">
       <Label Text="Welcome to Spotch!" FontSize="30" Margin="20" />
       <Label Text="Creat a new account" FontSize="20" Margin="20" />
-      <Label Text="Name" />
+      <Label Text="UserName" />
       <Entry x:Name="usernameEntry" />
+
+      <Label Text="UserId" />
+      <Entry x:Name="useridEntry" />
 
       <Label Text="Password" />
       <Entry IsPassword="true" x:Name="passwordEntry" />
 
-      <Label Text="email" />
+      <Label Text="Email" />
       <Entry x:Name="emailEntry"  Keyboard="Email" />
+
+      <Label Text="Birthday" />
+      <Entry x:Name="birthdayEntry" />
 
       <Label Text="{Binding err}"
              TextColor="#ff7c7c" />

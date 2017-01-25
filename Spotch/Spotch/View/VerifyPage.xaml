@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Spotch.View.VerifyPage">
+  <!-- 既にログインしている端末でアプリを起動したときの最初の認証ページ -->
+  <!-- うまくいかないからこのページは保留！ -->
+  <!-- ログイン処理からのメインページに飛ぶ予定 -->
+	<AbsoluteLayout VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand">
+
+    <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+        Source="Top.png" Aspect="AspectFill"/>
+
+    <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+      <StackLayout Orientation="Vertical">
+
+        <Label  Text="Spotch!"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontSize="60"
+                TextColor="#fff"
+                Margin="0,100,0,150"/>
+
+        <Label  Text="Developed by Javatea"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                FontSize="10"
+                TextColor="#fff"
+                Margin="0,100,0,0"/>
+
+      </StackLayout>
+    </ScrollView>
+
+  </AbsoluteLayout>
+</ContentPage>

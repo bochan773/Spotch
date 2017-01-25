@@ -21,19 +21,34 @@
                  AbsoluteLayout.LayoutBounds="0.5,60,80,80"
                  AbsoluteLayout.LayoutFlags="XProportional"/>
 
-          <Label Text="Kosuke Doi"
+          <Label Text="{Binding username}"
                  FontAttributes="Bold"
                  FontSize="26"
                  TextColor="#333"
                  HorizontalTextAlignment="Center"
                  AbsoluteLayout.LayoutBounds="0.5,140,1,40"
-                 AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" />
+                 AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
+                 x:Name="usernameText" />
 
         </AbsoluteLayout>
 
         <StackLayout>
           <Label Text="Birthday"/>
-          <Entry Text="1995/07/03"/>
+          <Entry Text="{Binding birthday}" x:Name="birthdayEntry"/>
+          
+          <Label Text="email"/>
+          <Entry Text="{Binding email}" x:Name="emailEntry"/>
+          
+          <!-- ↓端末内のユーザーデータ消す用に設置したログアウトボタン↓ -->
+          <Button x:Name="LogoutBtn"
+                Text="Logout"
+                HorizontalOptions="Center"
+                BackgroundColor="#40a0a0"
+                TextColor="#fff"
+                WidthRequest="150"
+                HeightRequest="60"/>
+          <!-- ↑テスト用なので後で消去↑ -->
+          
         </StackLayout>
 
       </StackLayout>

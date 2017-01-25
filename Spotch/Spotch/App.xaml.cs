@@ -9,7 +9,22 @@ namespace Spotch
 		{
 			InitializeComponent();
 
-			MainPage = new Spotch.View.TopPage();
+
+            //Application.Current.Properties.Clear();
+
+
+            if (Application.Current.Properties.ContainsKey("userid"))
+            {
+
+                MainPage = new Spotch.View.MainPage();
+
+            }
+            else
+            {
+                MainPage = new Spotch.View.TopPage();
+            }
+
+            
 		}
 
 		protected override void OnStart ()
