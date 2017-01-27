@@ -18,6 +18,7 @@ namespace Spotch.View
         {
             InitializeComponent();
         }
+
         public PostPage (ObservableCollection<Post> posts)
 		{
 			InitializeComponent ();
@@ -44,12 +45,25 @@ namespace Spotch.View
                 // Post
                 posts.Add(new Post
                 {
-                    text = textInput.Text,
+                    message = textInput.Text,
                     time = DateTime.Now,
                     position = p
                 });
 
                 textInput.Text = "";
+
+                // close
+                await Navigation.PopModalAsync(false);
+            }
+        }
+
+        async void closePage(object sender, EventArgs args)
+        {
+            var result = await DisplayAlert("Close", "閉じてもいいですか？", "OK", "キャンセル");
+
+            if (result == true) {
+                // close
+                await Navigation.PopModalAsync(false);
             }
         }
     }

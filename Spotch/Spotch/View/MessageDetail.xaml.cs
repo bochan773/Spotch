@@ -23,7 +23,7 @@ namespace Spotch.View
                 // Pinの表示
                 var pin = new Pin()
                 {
-                    Label = post.text,
+                    Label = post.message,
                     Position = post.position
                 };
                 MyMap.Pins.Add(pin);

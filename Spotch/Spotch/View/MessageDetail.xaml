@@ -12,7 +12,7 @@
       <Label Text="{Binding time}"
              TextColor="#888"
              FontSize="10"/>
-      <Label Text="{Binding text}"
+      <Label Text="{Binding message}"
              TextColor="#444"
              FontSize="24"
              HeightRequest="80"/>

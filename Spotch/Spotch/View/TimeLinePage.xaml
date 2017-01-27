@@ -26,7 +26,7 @@
           <DataTemplate>
             <ViewCell>
               <StackLayout>
-                <Label Text="{Binding text}"
+                <Label Text="{Binding message}"
                        TextColor="#333" 
                        FontSize="18"
                        HeightRequest="40"/>
@@ -38,7 +38,7 @@
         </ListView.ItemTemplate>
       </ListView>
 
-      
+      <!--
       <StackLayout Orientation="Vertical" VerticalOptions="End" BackgroundColor="#4080a0">
         <Entry x:Name="textInput"
                Placeholder="ここに何か書いてください..."
@@ -53,7 +53,7 @@
                 HeightRequest="50"
                 Clicked="OnSendTapped"/>
       </StackLayout>
-
+-->
       
     </StackLayout>
   </ContentPage.Content>

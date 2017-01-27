@@ -17,7 +17,7 @@ namespace Spotch.View
             messageView.ItemsSource = posts;
         }
 
-        
+        /*
         async void OnSendTapped(object sender, EventArgs args)
         {
             if (textInput.Text == null)
@@ -33,13 +33,13 @@ namespace Spotch.View
 
                 // Submit Post
                 posts.Add(new Post { text = textInput.Text,
-                                     time = DateTime.Now,
-                                     position = p
+                                     position = p,
+                                     time = DateTime.Now
                 });
 
                 textInput.Text = "";
             }
-        }
+        }*/
 
 
         void OnItemTapped(object sender, ItemTappedEventArgs args)
@@ -51,12 +51,11 @@ namespace Spotch.View
             /* text code
             var p = new Post { text = "Kawahara", position = new Position(33.834255, 132.765942) };
             Navigation.PushAsync(new MessageDetail(p), true);*/
-
         }
 
         async void OnPostTapped(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new PostPage(posts));
+            await Navigation.PushModalAsync(new PostPage(posts), false);
         }
     }
 }

@@ -24,7 +24,6 @@ namespace Spotch
                 MainPage = new Spotch.View.TopPage();
             }
 
-            
 		}
 
 		protected override void OnStart ()
