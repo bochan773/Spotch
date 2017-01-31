@@ -20,10 +20,10 @@ namespace Spotch.View
             string userid = useridEntry.Text;
             string password = passwordEntry.Text;
             string email = emailEntry.Text;
-            string birthday = birthdayEntry.Text;
+            DateTime birthday = birthdayEntry.Date;
 
             //テスト用にユーザーIDとpassは固定
-            if (username.Length != 0 && password.Length != 0 && email.Length != 0)
+            if (username.Length != 0 && password.Length != 0 && email.Length != 0 && userid.Length != 0)
             {
                 this.DisplayAlert("Success", "アカウント作成成功", "はい");
                 this.BindingContext = new { err = "" };

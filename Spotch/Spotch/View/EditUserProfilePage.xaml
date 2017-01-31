@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Spotch.View.UserProfilePage">
-
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Spotch.View.EditUserProfilePage">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Edit" Activated="EditClick"/>
+    <ToolbarItem Text="Save" Activated="SaveClick"/>
   </ContentPage.ToolbarItems>
 
   <ContentPage.Content>
@@ -20,8 +20,12 @@
           <Image Source="Usericon_test.jpg"
                  AbsoluteLayout.LayoutBounds="0.5,60,80,80"
                  AbsoluteLayout.LayoutFlags="XProportional"/>
+          <Image Source="EditUsericon.png"
+                 AbsoluteLayout.LayoutBounds="0.5,60,80,80"
+                 AbsoluteLayout.LayoutFlags="XProportional"/>
 
-          <Label Text="{Binding username}"
+          <!--<Label Text="Name"/>-->
+          <Entry Text="{Binding username}"
                  FontAttributes="Bold"
                  FontSize="26"
                  TextColor="#333"
@@ -34,21 +38,28 @@
 
         <StackLayout>
           <Label Text="Birthday"/>
-          <Label Text="{Binding birthday}" x:Name="birthdayEntry"/>
-          
+          <!--<Entry Text="{Binding birthday}" x:Name="birthdayEntry"/>-->
+          <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding birthday}" x:Name="birthdayEntry">
+         <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+         <DatePicker.MinimumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>Jan 1 1900</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MinimumDate>
+         <DatePicker.MaximumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>Dec 31 2017</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MaximumDate>
+      </DatePicker>
+
           <Label Text="email"/>
-          <Label Text="{Binding email}" x:Name="emailEntry"/>
-          
-          <!-- ↓端末内のユーザーデータ消す用に設置したログアウトボタン↓ -->
-          <Button x:Name="LogoutBtn"
-                Text="Logout"
-                HorizontalOptions="Center"
-                BackgroundColor="#40a0a0"
-                TextColor="#fff"
-                WidthRequest="150"
-                HeightRequest="60"/>
-          <!-- ↑テスト用なので後で消去↑ -->
-          
+          <Entry Text="{Binding email}" x:Name="emailEntry"/>
+
         </StackLayout>
 
       </StackLayout>

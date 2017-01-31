@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Spotch.View.SignupPage">
   <ContentPage.Content>
     <StackLayout VerticalOptions="Center">
       <Label Text="Welcome to Spotch!" FontSize="30" Margin="20" />
       <Label Text="Creat a new account" FontSize="20" Margin="20" />
       <Label Text="UserName" />
-      <Entry x:Name="usernameEntry" />
+      <Entry x:Name="usernameEntry" Keyboard="Url" />
 
       <Label Text="UserId" />
-      <Entry x:Name="useridEntry" />
+      <Entry x:Name="useridEntry" Keyboard="Url" />
 
       <Label Text="Password" />
       <Entry IsPassword="true" x:Name="passwordEntry" />
@@ -19,7 +20,24 @@
       <Entry x:Name="emailEntry"  Keyboard="Email" />
 
       <Label Text="Birthday" />
-      <Entry x:Name="birthdayEntry" />
+      <!--<Entry x:Name="birthdayEntry"  Keyboard="Numeric" />-->
+      <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" x:Name="birthdayEntry">
+         <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+         <DatePicker.MinimumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>Jan 1 1900</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MinimumDate>
+         <DatePicker.MaximumDate>
+            <sys:DateTime x:FactoryMethod="Parse">
+               <x:Arguments>
+                  <x:String>Dec 31 2017</x:String>
+               </x:Arguments>
+            </sys:DateTime>
+         </DatePicker.MaximumDate>
+      </DatePicker>
 
       <Label Text="{Binding err}"
              TextColor="#ff7c7c" />
