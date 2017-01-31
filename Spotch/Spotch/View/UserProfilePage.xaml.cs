@@ -27,7 +27,6 @@ namespace Spotch.View
 
         private async void LogoutBtn_Clicked(object sender, EventArgs e)
         {
-
             var result = await DisplayAlert("ログアウト", "ログアウトしていいですか？", "OK", "キャンセル");
             if (result)
             {

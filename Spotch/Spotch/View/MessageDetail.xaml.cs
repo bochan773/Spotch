@@ -27,7 +27,6 @@ namespace Spotch.View
                     Position = post.position
                 };
                 MyMap.Pins.Add(pin);
-                
             }
             else
             {
@@ -35,7 +34,6 @@ namespace Spotch.View
                 MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(location, Distance.FromMiles(1)));
             }
             
-
             this.BindingContext = post;
         }
     }

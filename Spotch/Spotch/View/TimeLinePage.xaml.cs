@@ -1,4 +1,5 @@
-﻿using Spotch.Models;
+﻿using Spotch.Controller;
+using Spotch.Models;
 using System;
 using System.Collections.ObjectModel;
 
@@ -55,6 +56,8 @@ namespace Spotch.View
 
         async void OnPostTapped(object sender, EventArgs args)
         {
+            //GeoManager gm = new GeoManager();
+            //var current = await gm.getCurrent();
             await Navigation.PushModalAsync(new PostPage(posts), false);
         }
     }

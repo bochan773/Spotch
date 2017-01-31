@@ -1,40 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Spotch.View.PostPage"
-             BackgroundColor="#000">
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="Spotch.View.PostPage">
 	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
 
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
   </ContentPage.Padding>
 
-  <StackLayout Orientation="Vertical" 
-                VerticalOptions="Center" 
-                BackgroundColor="#222">
+  
+  <ScrollView Orientation="Vertical">
+    <StackLayout Orientation="Vertical">
+      <Button Text="×"
+              TextColor="#333"
+              FontSize="24"
+              BackgroundColor="Color.Transparent"
+              HorizontalOptions="End"
+              WidthRequest="40"
+              HeightRequest="40"
+              Clicked="closePage"/>
     
-    <Button Text="×"
-            TextColor="#fff"
-            FontSize="24"
-            BackgroundColor="Color.Transparent"
-            HorizontalOptions="End"
-            WidthRequest="40"
-            HeightRequest="40"
-            Clicked="closePage"/>
+      <Editor x:Name="textInput"
+              TextColor="#333"
+              HeightRequest="150"
+              Keyboard="Chat"/>
     
-    <Editor x:Name="textInput"
-            TextColor="#fff"
-            BackgroundColor="#333"
-            HeightRequest="200"/>
+      <maps:Map x:Name="MyMap"
+                IsShowingUser="true"
+                VerticalOptions="FillAndExpand">
+      </maps:Map>
+
+      <Button Text="送信"
+        BackgroundColor="#40a040"
+        TextColor="#fff"
+        WidthRequest="80"
+        HeightRequest="60"
+        Clicked="OnSendTapped"/>
+    </StackLayout>
+  </ScrollView>
     
-    <Button Text="送信"
-            BackgroundColor="#40a040"
-            TextColor="#fff"
-            WidthRequest="80"
-            HeightRequest="60"
-            Clicked="OnSendTapped"/>
-    
-  </StackLayout>
 
   
 </ContentPage>

@@ -9,15 +9,12 @@
   </ContentPage.Padding>
 
   <ContentPage.ToolbarItems>
-    <!-- Clicked="OnPostTapped" -->
-    <!-- Activated="OnPostTapped" Order="Primary" Priority="0" -->
-    <!-- Command="{Binding OnPostTapped}" -->
     <ToolbarItem Text="Post" Clicked="OnPostTapped"/>
   </ContentPage.ToolbarItems>
 
   <ContentPage.Content>
+    
     <StackLayout>
-
       <ListView x:Name="messageView"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -36,25 +33,8 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
-
-      <!--
-      <StackLayout Orientation="Vertical" VerticalOptions="End" BackgroundColor="#4080a0">
-        <Entry x:Name="textInput"
-               Placeholder="ここに何か書いてください..."
-               TextColor="#fff"
-               WidthRequest="100"
-               HeightRequest="50"
-               Keyboard="Chat"/>
-        <Button Text="送信"
-                BackgroundColor="#40a0a0"
-                TextColor="#fff"
-                WidthRequest="80"
-                HeightRequest="50"
-                Clicked="OnSendTapped"/>
-      </StackLayout>
--->
-      
+      </ListView>      
     </StackLayout>
+  
   </ContentPage.Content>
 </ContentPage>
