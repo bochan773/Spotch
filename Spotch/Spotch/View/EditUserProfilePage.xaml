@@ -24,7 +24,7 @@
                  AbsoluteLayout.LayoutBounds="0.5,60,80,80"
                  AbsoluteLayout.LayoutFlags="XProportional"/>
 
-          <!--<Label Text="Name"/>-->
+          <Label Text="Name"/>
           <Entry Text="{Binding username}"
                  FontAttributes="Bold"
                  FontSize="26"

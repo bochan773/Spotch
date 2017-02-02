@@ -27,7 +27,7 @@ namespace Spotch.View
 
         private async void SaveClick(object sender, EventArgs e)
         {
-            var result = await DisplayAlert("保存", "変更内容を保存しますか？(まだ)", "OK", "キャンセル");
+            var result = await DisplayAlert("保存", "変更内容を保存しますか？(まだ保存されません)", "OK", "キャンセル");
             /*
             if (result)
             {
