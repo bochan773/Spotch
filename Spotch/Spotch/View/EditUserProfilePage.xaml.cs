@@ -12,7 +12,7 @@ namespace Spotch.View
 	{
 		public EditUserProfilePage ()
 		{
-            InitializeComponent();
+			InitializeComponent ();
 
             var username = Application.Current.Properties["username"] as string;
             var birthday = (DateTime)Application.Current.Properties["birthday"];
@@ -21,9 +21,7 @@ namespace Spotch.View
             usernameText.Text = username;
             birthdayEntry.Date = birthday;
             emailEntry.Text = email;
-
         }
-
 
         private async void SaveClick(object sender, EventArgs e)
         {

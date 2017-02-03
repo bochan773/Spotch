@@ -14,7 +14,6 @@ namespace Spotch.View
 		{
 			InitializeComponent ();
 
-
             if (Application.Current.Properties.ContainsKey("userid"))
             {
                 var userid = Application.Current.Properties["userid"] as string;
@@ -36,7 +35,7 @@ namespace Spotch.View
                 //this.DisplayAlert("Success", "ログイン成功", "はい");
                 this.BindingContext = new { err = "" };
                 
-
+                
                 Application.Current.Properties["userid"] = userid;
                 Application.Current.Properties["pass"] = password;
                 Application.Current.Properties["username"] = "Inada Natsumi";

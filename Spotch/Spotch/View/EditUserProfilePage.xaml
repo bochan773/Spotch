@@ -40,22 +40,22 @@
           <Label Text="Birthday"/>
           <!--<Entry Text="{Binding birthday}" x:Name="birthdayEntry"/>-->
           <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding birthday}" x:Name="birthdayEntry">
-         <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-         <DatePicker.MinimumDate>
-            <sys:DateTime x:FactoryMethod="Parse">
-               <x:Arguments>
+            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            <DatePicker.MinimumDate>
+              <sys:DateTime x:FactoryMethod="Parse">
+                <x:Arguments>
                   <x:String>Jan 1 1900</x:String>
-               </x:Arguments>
-            </sys:DateTime>
-         </DatePicker.MinimumDate>
-         <DatePicker.MaximumDate>
-            <sys:DateTime x:FactoryMethod="Parse">
-               <x:Arguments>
+                </x:Arguments>
+              </sys:DateTime>
+            </DatePicker.MinimumDate>
+            <DatePicker.MaximumDate>
+              <sys:DateTime x:FactoryMethod="Parse">
+                <x:Arguments>
                   <x:String>Dec 31 2017</x:String>
-               </x:Arguments>
-            </sys:DateTime>
-         </DatePicker.MaximumDate>
-      </DatePicker>
+                </x:Arguments>
+              </sys:DateTime>
+            </DatePicker.MaximumDate>
+          </DatePicker>
 
           <Label Text="email"/>
           <Entry Text="{Binding email}" x:Name="emailEntry"/>

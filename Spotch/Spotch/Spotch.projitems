@@ -16,7 +16,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controller\MapManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\SocketManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MyViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserAccount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\EditUserProfilePage.xaml.cs">
+      <DependentUpon>EditUserProfilePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\PostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\EditUserProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

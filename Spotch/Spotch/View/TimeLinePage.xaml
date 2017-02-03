@@ -18,6 +18,9 @@
       <ListView x:Name="messageView"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding LoadTweetsCommand}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 ItemTapped="OnItemTapped">
         <ListView.ItemTemplate>
           <DataTemplate>

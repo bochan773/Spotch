@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SocketIO.Client;
 using Spotch.Models;
 
@@ -7,7 +9,7 @@ namespace Spotch.Controller
     class SocketManager
     {
         // connect to a Socket.IO server
-        private Socket socket = IO.Socket("http://chat.socket.io/");
+        private Socket socket = IO.Socket("http://kbckj.net:8080/socket");
 
         void login()
         {
@@ -20,26 +22,37 @@ namespace Spotch.Controller
             socket.Close();
         }
         
-        void getTimeLine()
+        /*
+        ObservableCollectionSerializable<Posts> getTimeLine()
         {
+            ObservableCollectionSerializable timeline = new ObservableCollectionSerializable();
             // Connect
             socket.Connect();
 
-            socket.On("find", (data)=>
+            socket.Emit("articles/find");
+
+            socket.On("result/find", (data)=>
             {
+                object o = (object)data;
+                var jobject = o as JToken;
+                var sobject = (string)jobject;
 
+                timeline = JsonConvert.DeserializeObject<ObservableCollectionSerializable>(sobject);
             });
-
+            
             // Close
             socket.Close();
-        }
 
-        void addPost(Post post)
+            return timeline;
+        }
+        */
+
+        public void addPost(Post post)
         {
             // Connect
             socket.Connect();
 
-            var emit_post = Newtonsoft.Json.JsonConvert.SerializeObject(post);
+            var emit_post = JsonConvert.SerializeObject(post);
             // Post
             socket.Emit("add user", emit_post);
 
