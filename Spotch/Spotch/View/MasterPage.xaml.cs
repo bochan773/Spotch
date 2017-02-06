@@ -9,11 +9,14 @@ using Xamarin.Forms;
 namespace Spotch.View
 {
 	public partial class MasterPage : ContentPage
-	{
-		public MasterPage ()
+	{		
+        public MasterPage ()
 		{
 			InitializeComponent ();
-		}
+
+            usernameText.Text = Application.Current.Properties["username"] as string;
+            emailText.Text = Application.Current.Properties["email"] as string;
+        }
 
         // Detailページを画面遷移させるメソッド 
         void Navigate<P>() where P : Page, new()

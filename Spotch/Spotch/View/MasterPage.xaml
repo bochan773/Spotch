@@ -8,25 +8,39 @@
     <OnPlatform x:TypeArguments="Thickness" iOS="20" Android="0"/>
   </ContentPage.Padding>
 
-  <StackLayout
-      VerticalOptions="FillAndExpand">
+  <StackLayout>
 
-    <RelativeLayout
-      VerticalOptions="Fill"
-      HorizontalOptions="Fill"
-      HeightRequest="192"
-      BackgroundColor="#4080a0">
+    <AbsoluteLayout>
+      <Image Source="UserProfileBackground.jpg"
+             Aspect="AspectFill"
+             AbsoluteLayout.LayoutBounds="0,0,1,200"
+             AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
 
-      <Image Source="usericon_test.jpg"/>
-      <Label Text="abcdef@gmail.com"/>
+      <Image Source="Usericon_test.jpg"
+             AbsoluteLayout.LayoutBounds="0.5,60,80,80"
+             AbsoluteLayout.LayoutFlags="XProportional"/>
 
-    </RelativeLayout>
+      <Label x:Name="emailText"
+             FontSize="14"
+             TextColor="#fff"
+             HorizontalTextAlignment="Center"
+             AbsoluteLayout.LayoutBounds="0.5,140,1,40"
+             AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
+      
+      <Label x:Name="usernameText"
+             FontSize="28"
+             TextColor="#fff"
+             HorizontalTextAlignment="Center"
+             AbsoluteLayout.LayoutBounds="0.5,160,1,40"
+             AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
+
+    </AbsoluteLayout>
 
     <TableView Intent="Menu" RowHeight="60">
       <TableView.Root>
         <TableSection Title="MENU">
-          <TextCell Text="UserProfile" TextColor="Black" Tapped="UserProfile_Tapped" />
-          <TextCell Text="TimeLine" TextColor="Black" Tapped="TimeLine_Tapped" />
+          <TextCell Text="UserProfile" TextColor="#333" Tapped="UserProfile_Tapped" />
+          <TextCell Text="TimeLine" TextColor="#333" Tapped="TimeLine_Tapped" />
         </TableSection>
       </TableView.Root>
     </TableView>
