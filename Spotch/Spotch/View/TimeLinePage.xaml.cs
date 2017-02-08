@@ -8,13 +8,14 @@ namespace Spotch.View
 {
     public partial class TimeLinePage : ContentPage
 	{
-        ObservableCollection<Post> timeline = ObservableCollectionSerializable<Post>.GetInstance;
-        Xamarin.Forms.GoogleMaps.Position p = new Xamarin.Forms.GoogleMaps.Position(0,0);
+        ObservableCollection<Post> _timeline = ObservableCollectionSerializable<Post>.GetInstance;
+        Xamarin.Forms.GoogleMaps.Position _p = new Xamarin.Forms.GoogleMaps.Position(0,0);
+
         public TimeLinePage()
         {
             InitializeComponent();
             Title = "TimeLine";
-            messageView.ItemsSource = timeline;            
+            messageView.ItemsSource = _timeline;       
         }
 
         /*
@@ -40,9 +41,19 @@ namespace Spotch.View
             Navigation.PushAsync(new MessageDetail(post), true);
         }
 
-        async void OnPostTapped(object sender, EventArgs args)
+        void OnPostTapped(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new PostPage(), false);
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                try
+                {
+                    await Navigation.PushModalAsync(new PostPage(), false);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            });
         }
     }
 }

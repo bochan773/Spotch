@@ -25,13 +25,26 @@
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-              <StackLayout>
-                <Label Text="{Binding message}"
-                       TextColor="#333" 
-                       FontSize="18"
-                       HeightRequest="40"/>
-                <Label Text="{Binding time}"
-                       TextColor="#CCC" />
+              <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
+                <Image Source="Usericon_test.jpg"
+                       HeightRequest="70"
+                       VerticalOptions="Start"/>
+                <StackLayout>
+                  <Label Text="{Binding time}"
+                         TextColor="#CCC"
+                         FontSize="10"/>
+                  <Label Text="{Binding message}"
+                         TextColor="#333"
+                         FontSize="20"/>
+                  <StackLayout Orientation="Horizontal">
+                    <Label Text="★"
+                           TextColor="#aaa"
+                           FontSize="12"/>
+                    <Label Text="14"
+                           TextColor="#aaa"
+                           FontSize="12"/>
+                  </StackLayout>
+                </StackLayout>
               </StackLayout>
             </ViewCell>
           </DataTemplate>

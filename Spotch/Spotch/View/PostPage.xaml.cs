@@ -10,8 +10,8 @@ namespace Spotch.View
 {
     public partial class PostPage : ContentPage
 	{
-        ObservableCollection<Post> timeline = ObservableCollectionSerializable<Post>.GetInstance;
-        Position current;
+        ObservableCollection<Post> _timeline = ObservableCollectionSerializable<Post>.GetInstance;
+        Position _current;
 
         public PostPage()
         {
@@ -20,14 +20,14 @@ namespace Spotch.View
 
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(35, 139), Distance.FromMiles(1)));
             getCurrent();
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(current, Distance.FromMiles(1)));
+            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_current, Distance.FromMiles(1)));
         }
 
         async void getCurrent()
         {
             GeoManager gm = new GeoManager();
-            current = await gm.getCurrent();
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(current, Distance.FromMiles(1)));
+            _current = await gm.getCurrent();
+            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_current, Distance.FromMiles(1)));
         }
 
         async void OnSendTapped(object sender, EventArgs args)
@@ -38,7 +38,7 @@ namespace Spotch.View
                 return;
             }
 
-            if (current.Latitude != 0 && current.Longitude != 0 ) {
+            if (_current.Latitude != 0 && _current.Longitude != 0 ) {
                 // Post
                 /*
                 posts.Add(new Post
@@ -49,11 +49,11 @@ namespace Spotch.View
                 });*/
                 
 
-                timeline.Add(new Post
+                _timeline.Add(new Post
                 {
                     message = textInput.Text,
                     time = DateTime.Now,
-                    position = current
+                    position = _current
                 });
 
                 textInput.Text = "";

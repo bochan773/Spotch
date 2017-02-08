@@ -9,7 +9,7 @@ namespace Spotch.View
 {
     public partial class MessageDetail : ContentPage
 	{
-        public Position location = new Position(35, 139);　// Default Location : Tokyo
+        public Position _location = new Position(35, 139);　// Default Location : Tokyo
 
         public MessageDetail(Post post)
         {
@@ -30,8 +30,8 @@ namespace Spotch.View
             }
             else
             {
-                post.position = location;
-                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(location, Distance.FromMiles(1)));
+                post.position = _location;
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_location, Distance.FromMiles(1)));
             }
             
             this.BindingContext = post;
