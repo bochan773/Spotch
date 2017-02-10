@@ -17,6 +17,7 @@
     <StackLayout>
       <ListView x:Name="messageView"
                 VerticalOptions="FillAndExpand"
+                BackgroundColor="#eee"
                 HasUnevenRows="true"
                 IsPullToRefreshEnabled="True"
                 RefreshCommand="{Binding LoadTweetsCommand}"
@@ -27,22 +28,22 @@
             <ViewCell>
               <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
                 <Image Source="Usericon_test.jpg"
-                       HeightRequest="70"
+                       HeightRequest="50"
                        VerticalOptions="Start"/>
                 <StackLayout>
                   <Label Text="{Binding time}"
                          TextColor="#CCC"
-                         FontSize="10"/>
+                         FontSize="8"/>
                   <Label Text="{Binding message}"
                          TextColor="#333"
-                         FontSize="20"/>
+                         FontSize="16"/>
                   <StackLayout Orientation="Horizontal">
                     <Label Text="★"
                            TextColor="#aaa"
-                           FontSize="12"/>
+                           FontSize="10"/>
                     <Label Text="14"
                            TextColor="#aaa"
-                           FontSize="12"/>
+                           FontSize="10"/>
                   </StackLayout>
                 </StackLayout>
               </StackLayout>
