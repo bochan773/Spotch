@@ -16,21 +16,27 @@ namespace Spotch.View
             InitializeComponent();
             Title = "詳細";
 
-            if (post.position != null)
+            Position position = new Position(post.latitude, post.longitude);
+
+            if (position != null)
             {
-                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(post.position, Distance.FromMiles(1)));
+                MyMap.MoveToRegion(
+                    MapSpan.FromCenterAndRadius(
+                        new Position(post.latitude,post.longitude), 
+                        Distance.FromMiles(1)
+                    )
+                );
 
                 // Pinの表示
                 var pin = new Pin()
                 {
-                    Label = post.message,
-                    Position = post.position
+                    Label = post.content,
+                    Position = position
                 };
                 MyMap.Pins.Add(pin);
             }
             else
             {
-                post.position = _location;
                 MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_location, Distance.FromMiles(1)));
             }
             

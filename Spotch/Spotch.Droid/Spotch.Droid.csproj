@@ -66,10 +66,6 @@
     <DebugSymbols>False</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Engine.IO.Client, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Engine.IO.Client.0.7.0.1\lib\MonoAndroid\Engine.IO.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.180\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>True</Private>
@@ -100,27 +96,15 @@
       <HintPath>..\..\packages\Plugin.Permissions.1.2.1\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Socket.IO.Client, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Socket.IO.Client.0.7.0.1\lib\MonoAndroid\Socket.IO.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Square.OkHttp3, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Square.OkHttp3.3.1.2.0\lib\MonoAndroid\Square.OkHttp3.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Square.OkHttp3.WS, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Square.OkHttp3.WS.3.1.2.0\lib\MonoAndroid\Square.OkHttp3.WS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Square.OkIO, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Square.OkIO.1.6.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ObjectModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.59611, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
       <Private>True</Private>

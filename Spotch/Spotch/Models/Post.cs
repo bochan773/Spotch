@@ -12,47 +12,27 @@ namespace Spotch.Models
         public Post()
         {
             // test code
-            id = 1;
+            postId = 1;
+            userId = 1;
         }
 
-        [JsonProperty(PropertyName = "id")]
-        public long id { set; get; }
+        [JsonProperty(PropertyName = "postId")]
+        public long postId { set; get; }
 
-        [JsonProperty(PropertyName = "userid")]
-        public long user_id { set; get; }
+        [JsonProperty(PropertyName = "userId")]
+        public long userId { set; get; }
 
         [JsonProperty(PropertyName = "content")]
-        public string message { set; get; }
+        public string content { set; get; }
 
-        public Position position { set; get; }
+        [JsonProperty(PropertyName = "latitude")]
+        public double latitude { set; get; }
 
-        [JsonProperty(PropertyName = "x")]
-        public double x
-        {
-            set
-            {
-                this.x = this.position.Latitude;
-            }
-            get
-            {
-                return this.x;
-            }
-        }
+        [JsonProperty(PropertyName = "longitude")]
+        public double longitude { set; get; }
 
-        [JsonProperty(PropertyName = "y")]
-        public double y
-        {
-            set
-            {
-                this.y = this.position.Longitude;
-            }
-            get
-            {
-                return this.y;
-            }
-        }
-
-        [JsonProperty(PropertyName = "time")]
-        public DateTime time { get; set; }
+        [JsonProperty(PropertyName = "createAt")]
+        [JsonConverter(typeof(CustomDateTimeConverter))]
+        public DateTime createAt { set; get; }
     }
 }

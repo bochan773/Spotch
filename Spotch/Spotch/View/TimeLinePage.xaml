@@ -9,6 +9,7 @@
   </ContentPage.Padding>
 
   <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Load" Clicked="OnLoadTapped"/>
     <ToolbarItem Text="Post" Clicked="OnPostTapped"/>
   </ContentPage.ToolbarItems>
 
@@ -20,7 +21,7 @@
                 BackgroundColor="#eee"
                 HasUnevenRows="true"
                 IsPullToRefreshEnabled="True"
-                RefreshCommand="{Binding LoadTweetsCommand}"
+                RefreshCommand="{Binding loadTimeLine}"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 ItemTapped="OnItemTapped">
         <ListView.ItemTemplate>

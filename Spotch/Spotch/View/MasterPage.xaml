@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Spotch.View.MasterPage"
-             Title="Menu">
+             Title="Menu"
+             BackgroundColor="#eee">
 
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="20" Android="0"/>
@@ -20,31 +21,35 @@
              AbsoluteLayout.LayoutBounds="0.5,60,80,80"
              AbsoluteLayout.LayoutFlags="XProportional"/>
 
-      <Label x:Name="emailText"
-             FontSize="14"
-             TextColor="#fff"
+      <Label x:Name="usernameText"
+             FontSize="32"
+             TextColor="#333"
              HorizontalTextAlignment="Center"
-             AbsoluteLayout.LayoutBounds="0.5,140,1,40"
+             AbsoluteLayout.LayoutBounds="0.5,150,1,40"
              AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
       
-      <Label x:Name="usernameText"
-             FontSize="28"
-             TextColor="#fff"
+      <Label x:Name="emailText"
+             FontSize="16"
+             TextColor="#333"
              HorizontalTextAlignment="Center"
-             AbsoluteLayout.LayoutBounds="0.5,160,1,40"
+             AbsoluteLayout.LayoutBounds="0.5,200,1,40"
              AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
-
     </AbsoluteLayout>
+    
+    <!--
+    <Label Text="UserProfile" TextColor="#333" Tapped="UserProfile_Tapped" />
+    <Label Text="TimeLine" TextColor="#333" Tapped="TimeLine_Tapped" />
+    <Label Text="Settings" TextColor="#333" Tapped="Settings_Tapped" />
+    -->
 
-    <TableView Intent="Menu" RowHeight="60">
-      <TableView.Root>
-        <TableSection Title="MENU">
-          <TextCell Text="UserProfile" TextColor="#333" Tapped="UserProfile_Tapped" />
-          <TextCell Text="TimeLine" TextColor="#333" Tapped="TimeLine_Tapped" />
-          <TextCell Text="Settings" TextColor="#333" Tapped="Settings_Tapped" />
-        </TableSection>
-      </TableView.Root>
+    <TableView RowHeight="60">
+      <TableSection>
+        <TextCell Text="UserProfile" TextColor="#333" Tapped="UserProfile_Tapped" />
+        <TextCell Text="TimeLine" TextColor="#333" Tapped="TimeLine_Tapped" />
+        <TextCell Text="Settings" TextColor="#333" Tapped="Settings_Tapped" />
+      </TableSection>
     </TableView>
+
   </StackLayout>
   
 </ContentPage>

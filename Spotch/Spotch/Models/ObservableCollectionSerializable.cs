@@ -12,11 +12,6 @@ namespace Spotch.Models
         // Singleton
         private static ObservableCollection<T> _instance = new ObservableCollection<T>();
 
-        private ObservableCollectionSerializable()
-        {
-            Debug.WriteLine("Create SampleSingleton instance.");
-        }
-
         public static ObservableCollection<T> GetInstance
         {
             get
@@ -25,6 +20,5 @@ namespace Spotch.Models
                 return _instance;
             }
         }
-
     }
 }

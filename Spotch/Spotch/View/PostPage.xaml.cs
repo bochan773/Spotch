@@ -3,6 +3,7 @@ using Spotch.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -39,22 +40,24 @@ namespace Spotch.View
             }
 
             if (_current.Latitude != 0 && _current.Longitude != 0 ) {
-                // Post
-                /*
-                posts.Add(new Post
+                // Post  
+                WebSocketClient webSocket = new WebSocketClient("ws://kbckj.net:8080/socket/articles/create");                   
+                webSocket.sendPost(new Post
                 {
-                    message = textInput.Text,
-                    time = DateTime.Now,
-                    position = current
-                });*/
-                
+                    content = textInput.Text,
+                    latitude = _current.Latitude,
+                    longitude = _current.Longitude,
+                    createAt = DateTime.Now
+                });
 
+
+                /*
                 _timeline.Add(new Post
                 {
                     message = textInput.Text,
                     time = DateTime.Now,
                     position = _current
-                });
+                });*/
 
                 textInput.Text = "";
                 

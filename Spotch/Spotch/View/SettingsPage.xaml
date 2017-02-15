@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ColorChanges="clr-namespace:Spotch;assembly=Spotch"
+             x:Class="Spotch.View.SettingsPage"
+             Title="Settings">
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <ColorChanges:StringToColorConverter x:Key="StringToColorConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+           
+  <StackLayout>
+    <Label Text="Color Settings"
+           FontSize="38"
+           TextColor="{Binding MyTextColor, Converter={StaticResource StringToColorConverter}}"
+           HorizontalOptions="Center"/>
+
+    <Label Text="BackgroundColor"
+           TextColor="{Binding MyTextColor, Converter={StaticResource StringToColorConverter}}"
+           FontSize="16"/>
+    <StackLayout x:Name="ColorSettings" Orientation="Horizontal">
+        <Button x:Name="WHITE" 
+                WidthRequest="80"
+                HeightRequest="80"
+                BackgroundColor="#fff"
+                Clicked="OnWhiteColor"/>
+      <Button x:Name="DARK"
+                WidthRequest="80"
+                HeightRequest="80"
+                BackgroundColor="#333"
+                Clicked="OnDarkColor"/>
+     </StackLayout>
+
+    <StackLayout Orientation="Horizontal">
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

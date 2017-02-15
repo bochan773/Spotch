@@ -14,12 +14,15 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controller\GeoManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\MapManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controller\SocketManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\UIColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\WebSocketClient2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\WebSocketClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CustomDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MyViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ObjectToPostConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StringToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UIColorModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserAccount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\EditUserProfilePage.xaml.cs">
       <DependentUpon>EditUserProfilePage.xaml</DependentUpon>
