@@ -23,45 +23,21 @@ namespace Spotch.Controller
             using (this._ws = new WebSocket(uri))
             {
                 //this._ws.OnMessage += (sender, e) => _strJson = e.Data;
+                
                 this._ws.OnMessage += (sender, e) =>
                 {
-                    _strJson = e.Data;
-
-                    Console.WriteLine("+++++++++++++++++++++++++++++++++");
-                    Console.WriteLine("+++++++++++++++++++++++++++++++++");
-                    Console.Write("recievedData:" + e.Data);
-                    Console.WriteLine("+++++++++++++++++++++++++++++++++");
-                    Console.WriteLine("+++++++++++++++++++++++++++++++++");
+                    this._strJson = e.Data;
                 };
+                
             }
         }
-
-        public string getJson(object obj)
+        
+        public void sendObject(object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
 
             this._ws.Connect();
             this._ws.Send(json);
-
-            return json;
-        }
-
-        public void sendPost(object obj)
-        {
-            this._strJson = JsonConvert.SerializeObject(obj);
-            this._ws.Connect();
-            debugJson();
-            this._ws.Send(this._strJson);
-        }
-
-        public void debugJson()
-        {
-            this._ws.Connect();
-            Console.WriteLine("+++++++++++++++++++++++++++++++++");
-            Console.WriteLine("+++++++++++++++++++++++++++++++++");
-            Console.WriteLine(_strJson);
-            Console.WriteLine("+++++++++++++++++++++++++++++++++");
-            Console.WriteLine("+++++++++++++++++++++++++++++++++");
         }
 
         public string getJson()
@@ -69,5 +45,23 @@ namespace Spotch.Controller
             return _strJson;
         }
 
+        public async Task getJson(object obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+
+            this._ws.Connect();
+            this._ws.Send(json);
+
+            await Task.Delay(100);
+        }
+        
+        public void debugJson()
+        {
+            Console.WriteLine("+++++++++++++++++++++++++++++++++");
+            Console.WriteLine("+++++++++++++++++++++++++++++++++");
+            Console.WriteLine(_strJson);
+            Console.WriteLine("+++++++++++++++++++++++++++++++++");
+            Console.WriteLine("+++++++++++++++++++++++++++++++++");
+        }
     }
 }
