@@ -29,7 +29,7 @@ namespace Spotch.View
             if (us != null)
             {
                 Console.WriteLine("-----ユーザーデータが保存されてるよ");
-                Console.WriteLine("testの内容" + us.username + "::" + us.password);
+                Console.WriteLine("testの内容" + us.userName + "::" + us.password);
                 user.BindingContext = us;
             }
             else

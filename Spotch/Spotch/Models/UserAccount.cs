@@ -16,6 +16,7 @@ namespace Spotch.Models
         [JsonProperty(PropertyName = "userName")]
         public string userName { set; get; }
         [JsonProperty(PropertyName = "birthday")]
+        [JsonConverter(typeof(CustomDateTimeConverter))]
         public DateTime birthday { set; get; }
         [JsonProperty(PropertyName = "email")]
         public string email { set; get; }

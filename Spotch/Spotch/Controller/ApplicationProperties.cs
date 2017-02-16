@@ -51,9 +51,10 @@ namespace Spotch.Controller
             return Task.FromResult(true);
         }
     
-        public void SaveID(string value)
+        public void SaveID(long value)
         {
-            Application.Current.Properties["userid"] = value;
+            Application.Current.Properties["userid"] = value.ToString();
+            Application.Current.SavePropertiesAsync();
         }
 
         public string LoadID()

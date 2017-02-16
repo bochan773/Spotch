@@ -1,24 +1,29 @@
-﻿using Spotch.Controller;
+﻿using Newtonsoft.Json;
+using Spotch.Controller;
 using Spotch.Models;
 using System;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Spotch.View
 {
 	public partial class SignupPage : ContentPage
 	{
-        private ApplicationProperties sessionRepository = null;
+        private ApplicationProperties _sessionRepository = null;
+        private WebSocketClient _webSocket;
+        private string uri = "ws://kbckj.net:8080/socket/user/signup";
 
         public SignupPage ()
 		{
 			InitializeComponent ();
 
             //sessionRepository.SetValue<UserAccount>(new UserAccount());
-            sessionRepository = new ApplicationProperties();
+            _sessionRepository = new ApplicationProperties();
+            _webSocket = new WebSocketClient(uri);
         }
 
-        async void SignupBtnClicked(object sender, EventArgs args)
+        void SignupBtnClicked(object sender, EventArgs args)
         {
             
             string uname = username.Text;
@@ -30,40 +35,59 @@ namespace Spotch.View
             if (uname.Length != 0 && pass.Length != 0 && mail.Length != 0)
             {   
                 //入力されていたらそのデータを取得してUserクラスを作る
-                UserAccount ua = new UserAccount();
+                UserAccount ua = new UserAccount
+                {
+                    userName = uname,
+                    password = pass,
+                    birthday = birth,
+                    email = mail
+                };
                 
-                ua.username = uname;
-                ua.password = pass;
-                ua.birthday = birth;
-                ua.email = mail;
+                
 
                 bool check = IsValidMailAddress(mail);
                 if (check)
                 {
+
+
+                    Console.WriteLine("uaの内容" + ua.userName + "::" + ua.password + "::" + ua.email + "::" + ua.birthday);
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    { 
+                        //サーバーに送る
+                        await _webSocket.sendObject(ua);
+
+
+                        await Task.Run(async () =>
+                        {
+                            await Task.Delay(300);
+                            var json = _webSocket.getJson();
+                            var obj = JsonConvert.DeserializeObject<SignupModel>(json);
+
+                            Console.WriteLine("戻ってきたデータuserid:"+obj.userId+":::::::result:"+obj.result);
+
+                            if (!obj.result)
+                            {
+                                return;
+                            }
+                            
+                                //サーバから返却されたユーザーIDと共に端末内にユーザー情報保存
+
+                                var userid = obj.userId;
+                                ua.userId = userid;
+                                _sessionRepository.SaveID(userid);
+
+                                this._sessionRepository.SetValue<UserAccount>(ua);
+
+                                bool flg = await this._sessionRepository.SaveAsync();
+                                //await this.DisplayAlert("Success", "アカウント作成成功", "はい");
+                                //Application.Current.MainPage = new MainPage();
+                                
+                                Console.WriteLine("アカウント作成に成功だよ！");
+                        });
+                        Application.Current.MainPage = new MainPage();
+                    });
                     
-
-                    Console.WriteLine("uaの内容" + ua.username + "::" + ua.password + "::" + ua.email + "::" + ua.birthday);
-
-                    //ここに通信処理
-                    //アカウント作成依頼
-                    //通信に成功した場合、サーバから返却されたユーザーIDと共に端末内にユーザー情報保存
-
-                    this.sessionRepository.SetValue<UserAccount>(ua);
-
-                    bool flg = await this.sessionRepository.SaveAsync();
-
-                    if (flg)
-                    {
-                        Console.WriteLine("Saveされたよ");
-                    }
-                    else
-                    {
-                        Console.WriteLine("失敗じゃないかな");
-                    }
-
-                    await this.DisplayAlert("Success", "アカウント作成成功", "はい");
-                    Application.Current.MainPage = new MainPage();
-                    //Application.Current.MainPage = new UserProfilePage();
                 }
                 else
                 {
@@ -113,5 +137,56 @@ namespace Spotch.View
                 }
             });
         }
+
+
+        /*ごみ
+         * Device.BeginInvokeOnMainThread(async () =>
+                    { 
+                        //サーバーに送る
+                        await _webSocket.sendObject(ua);
+
+
+                        await Task.Run(async () =>
+                        {
+                            await Task.Delay(200);
+                            var json = _webSocket.getJson();
+                            var obj = JsonConvert.DeserializeObject<SignupModel>(json);
+
+                            Console.WriteLine("戻ってきたデータuserid:"+obj.userId+":::::::result:"+obj.result);
+
+                            if (obj.result)
+                            {
+                                //サーバから返却されたユーザーIDと共に端末内にユーザー情報保存
+
+                                var userid = obj.userId;
+                                ua.userId = userid;
+                                _sessionRepository.SaveID(userid);
+
+                                this._sessionRepository.SetValue<UserAccount>(ua);
+
+                                bool flg = await this._sessionRepository.SaveAsync();
+
+                                if (flg)
+                                {
+                                    Console.WriteLine("Saveされたよ");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("失敗じゃないかな");
+                                }
+
+                                //await this.DisplayAlert("Success", "アカウント作成成功", "はい");
+                                //Application.Current.MainPage = new MainPage();
+                                Application.Current.MainPage = new UserProfilePage();
+                                Console.WriteLine("アカウント作成に成功だよ！");
+                            }
+                            else
+                            {
+                                Console.WriteLine("アカウント作成に失敗したよ");
+                                this.BindingContext = new { err = "アカウントの作成に失敗しました。" };
+                            }
+                        });
+                    });
+         */
     }
 }

@@ -21,7 +21,7 @@
                  AbsoluteLayout.LayoutBounds="0.5,60,80,80"
                  AbsoluteLayout.LayoutFlags="XProportional"/>
 
-          <Label Text="{Binding username}"
+          <Label Text="{Binding userName}"
                  FontSize="32"
                  TextColor="#fff"
                  HorizontalTextAlignment="Center"

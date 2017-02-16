@@ -31,7 +31,7 @@ namespace Spotch.View
 
                 //テスト用のnew
                 UserAccount us = new UserAccount();
-                us.user_id = 24392;
+                us.userId = 24392;
 
                 //ユーザーが存在するか確認
                 if (us!=null)

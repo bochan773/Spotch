@@ -51,10 +51,10 @@ namespace Spotch.View
                 string username = usernameText.Text;
                 string email = emailEntry.Text;
                 DateTime birthday = birthdayEntry.Date;
-                if (!username.Equals(us.username))
+                if (!username.Equals(us.userName))
                 {
                     Console.WriteLine("--------ユーザー名が変更されたよ---------");
-                    us.username = username;
+                    us.userName = username;
                 }
                 if (!email.Equals(us.email))
                 {
