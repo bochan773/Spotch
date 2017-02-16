@@ -42,13 +42,11 @@ namespace Spotch.View
                     birthday = birth,
                     email = mail
                 };
-                
-                
+               
 
                 bool check = IsValidMailAddress(mail);
                 if (check)
                 {
-
 
                     Console.WriteLine("uaの内容" + ua.userName + "::" + ua.password + "::" + ua.email + "::" + ua.birthday);
 
@@ -85,6 +83,7 @@ namespace Spotch.View
                                 
                                 Console.WriteLine("アカウント作成に成功だよ！");
                         });
+
                         Application.Current.MainPage = new MainPage();
                     });
                     

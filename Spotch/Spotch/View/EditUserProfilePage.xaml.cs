@@ -14,11 +14,11 @@ namespace Spotch.View
 		{
 			InitializeComponent ();
             /*
-            var username = Application.Current.Properties["username"] as string;
+            var userName = Application.Current.Properties["userName"] as string;
             var birthday = (DateTime)Application.Current.Properties["birthday"];
             var email = Application.Current.Properties["email"] as string;
 
-            usernameText.Text = username;
+            userNameText.Text = userName;
             birthdayEntry.Date = birthday;
             emailEntry.Text = email;
             */
@@ -48,13 +48,15 @@ namespace Spotch.View
             if (result)
             {
                 //変更された内容を確認
-                string username = usernameText.Text;
+                string userName = usernameText.Text;
                 string email = emailEntry.Text;
                 DateTime birthday = birthdayEntry.Date;
-                if (!username.Equals(us.userName))
+
+                if (!userName.Equals(us.userName))
                 {
                     Console.WriteLine("--------ユーザー名が変更されたよ---------");
-                    us.userName = username;
+                    us.userName = userName;
+
                 }
                 if (!email.Equals(us.email))
                 {

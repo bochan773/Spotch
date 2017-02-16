@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Spotch.View.HotSpotPage"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps">
+
+  <ContentPage.Content>
+    <maps:Map x:Name="MyMap"
+            IsShowingUser="true"
+            VerticalOptions="FillAndExpand">
+    </maps:Map>
+  </ContentPage.Content>
+  
+</ContentPage>

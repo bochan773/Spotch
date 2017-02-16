@@ -49,7 +49,7 @@ namespace Spotch.Controller
             this._ws.Connect();
             this._ws.Send(json);
 
-            await Task.Delay(200);
+            await Task.Delay(50);
         }
 
         public string getJson()

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -25,10 +26,8 @@ namespace Spotch.View
 
     public partial class TimeLinePage : ContentPage
 	{
-        WebSocketClient _webSocket;
-        //List<Post> _timeline = TimeLine.Collections;
-        
-        readonly string uri = "ws://kbckj.net:8080/socket/articles/find";
+        private WebSocketClient _webSocket;
+        private readonly string uri = "ws://kbckj.net:8080/socket/articles/find";
         private Position _current;
 
         public TimeLinePage()
@@ -38,23 +37,42 @@ namespace Spotch.View
                         
             loadTimeLine();
             messageView.ItemsSource = TimeLine.Collections;
+
+
+
+            RefreshCommand = new Command( (nothing) => {
+                loadTimeLine();
+                // Binding機構経由でListViewのIsRefreshingプロパティも変更する
+                IsRefreshing = false;
+            },
+                // ICommand.CanExecuteにもバインドしたプロパティを利用できる
+                (nothing) => !IsRefreshing
+            );
+
         }
 
-        /*
-        private bool isBusy;
-        public bool IsBusy
+        // ListViewを引っ張った時に実行させるコマンド
+        public ICommand RefreshCommand
         {
-            get { return isBusy; }
+            get;
+            private set;
+        }
+        // ListView.IsRefreshingと同期させるプロパティ
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
             set
             {
-                if (isBusy == value)
+                if (value == isRefreshing)
                     return;
-
-                isBusy = value;
-                OnPropertyChanged("IsBusy");
+                isRefreshing = value;
+                OnPropertyChanged();
             }
         }
-        */
+
+        
+
         async Task getCurrent()
         {
             GeoManager gm = new GeoManager();
@@ -64,33 +82,6 @@ namespace Spotch.View
         void loadTimeLine()
         {
             _webSocket = new WebSocketClient(uri);
-            /*
-            var jsonTest = @"[{
-                                ""postId"":1422,
-                                ""userId"":1,
-                                ""latitude"":33.8343396,
-                                ""longitude"":132.7660037,
-                                ""content"":""あいうえお"",
-                                ""createAt"":""2017-02-15 18:20:57""
-                             },
-                             {
-                                ""postId"":1424,
-                                ""userId"":2,
-                                ""latitude"":33.8343396,
-                                ""longitude"":132.7660037,
-                                ""content"":""かきくけこ"",
-                                ""createAt"":""2017-02-15 18:23:27""
-                            　},
-{
-                                ""postId"":1425,
-                                ""userId"":3,
-                                ""latitude"":33.8343396,
-                                ""longitude"":132.7660037,
-                                ""content"":""さしすせそ"",
-                                ""createAt"":""2017-02-15 18:24:27""
-                            　}
-                            ]";
-            */
 
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -108,10 +99,10 @@ namespace Spotch.View
                     await _webSocket.sendObject(msg);
                     await Task.Run(async() =>
                    {
-                       await Task.Delay(200);
+                       await Task.Delay(100);
                        var json = _webSocket.getJson();
                        Console.WriteLine("List<Post>Json:" + json);
-                       TimeLine.Collections = JsonConvert.DeserializeObject<List<Post>>(json);
+                       TimeLine.Collections = JsonConvert.DeserializeObject<List<PostModel>>(json);
                        messageView.ItemsSource = TimeLine.Collections;
                    });
                 }
@@ -120,13 +111,11 @@ namespace Spotch.View
                     Console.WriteLine(ex.ToString());
                 }
             });
-
-
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs args)
         {
-            Post post = args.Item as Post;
+            PostModel post = args.Item as PostModel;
 
             Navigation.PushAsync(new MessageDetail(post), true);
         }

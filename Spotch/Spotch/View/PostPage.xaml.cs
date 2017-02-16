@@ -12,7 +12,7 @@ namespace Spotch.View
 {
     public partial class PostPage : ContentPage
 	{
-        List<Post> _timeline = TimeLine.Collections;
+        List<PostModel> _timeline = TimeLine.Collections;
         Position _current;
 
         public PostPage()
@@ -43,7 +43,7 @@ namespace Spotch.View
             if (_current.Latitude != 0 && _current.Longitude != 0 ) {
                 // Post  
                 WebSocketClient webSocket = new WebSocketClient("ws://kbckj.net:8080/socket/articles/create");                   
-                await webSocket.sendObject(new Post
+                await webSocket.sendObject(new PostModel
                 {
                     message = textInput.Text,
                     latitude = _current.Latitude,

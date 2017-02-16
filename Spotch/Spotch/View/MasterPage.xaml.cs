@@ -39,6 +39,8 @@ namespace Spotch.View
           => Navigate<TimeLinePage>();
         protected void UserProfile_Tapped(object sender, EventArgs e)
           => Navigate<UserProfilePage>();
+        protected void HotSpot_Tapped(object sender, EventArgs e)
+          => Navigate<HotSpotPage>();
         protected void Settings_Tapped(object sender, EventArgs e)
           => Navigate<SettingsPage>();
     }

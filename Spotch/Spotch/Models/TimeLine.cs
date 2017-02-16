@@ -7,9 +7,9 @@ namespace Spotch.Models
     class TimeLine
     {
         // Singleton
-        private static List<Post> _collection = new List<Post>();
+        private static List<PostModel> _collection = new List<PostModel>();
 
-        public static List<Post> Collections
+        public static List<PostModel> Collections
         {
             get
             {

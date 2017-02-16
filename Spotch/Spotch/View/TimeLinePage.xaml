@@ -21,8 +21,9 @@
                 BackgroundColor="#eee"
                 HasUnevenRows="true"
                 IsPullToRefreshEnabled="True"
-                RefreshCommand="{Binding loadTimeLine}"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                 ItemTapped="OnItemTapped">
         <ListView.ItemTemplate>
           <DataTemplate>

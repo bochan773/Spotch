@@ -21,8 +21,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\CustomDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObjectToPostConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionSerializable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PostModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SignupModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StringToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TimeLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UIColorModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserAccount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AcceptableUsePolicyPage.xaml.cs">
@@ -31,6 +33,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EditUserProfilePage.xaml.cs">
       <DependentUpon>EditUserProfilePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\HotSpotPage.xaml.cs">
+      <DependentUpon>HotSpotPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
@@ -151,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\AcceptableUsePolicyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\HotSpotPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

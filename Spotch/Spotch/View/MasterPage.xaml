@@ -46,6 +46,7 @@
       <TableSection>
         <TextCell Text="UserProfile" TextColor="#333" Tapped="UserProfile_Tapped" />
         <TextCell Text="TimeLine" TextColor="#333" Tapped="TimeLine_Tapped" />
+        <TextCell Text="HotSpot" TextColor="#333" Tapped="HotSpot_Tapped" />
         <TextCell Text="Settings" TextColor="#333" Tapped="Settings_Tapped" />
       </TableSection>
     </TableView>

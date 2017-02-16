@@ -7,9 +7,9 @@ using Xamarin.Forms.GoogleMaps;
 namespace Spotch.Models
 {
     [JsonObject]
-    public class Post
+    public class PostModel
     {
-        public Post()
+        public PostModel()
         {
             userId = 1;
         }
@@ -31,5 +31,6 @@ namespace Spotch.Models
         [JsonProperty(PropertyName = "createAt")]
         [JsonConverter(typeof(CustomDateTimeConverter))]
         public DateTime createAt { set; get; }
+
     }
 }
