@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Spotch.Controller;
+using Spotch.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +11,26 @@ using Xamarin.Forms;
 namespace Spotch.View
 {
 	public partial class MasterPage : ContentPage
-	{		
+	{
+        private ApplicationProperties sessionRepository = null;
         public MasterPage ()
 		{
 			InitializeComponent ();
 
+            sessionRepository = new ApplicationProperties();
+            /*
             usernameText.Text = Application.Current.Properties["username"] as string;
             emailText.Text = Application.Current.Properties["email"] as string;
+            */
+        }
+
+        async void  BindingText()
+        {
+            await sessionRepository.LoadAsync();
+            var ua = sessionRepository.GetValue<UserAccount>();
+
+            usernameText.Text = ua.userName;
+            emailText.Text= ua.email;
         }
 
         // Detailページを画面遷移させるメソッド 
