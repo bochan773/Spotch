@@ -39,7 +39,14 @@ namespace Spotch
                 //ここに通信処理
 
                 //返ってきたユーザー情報から端末内保存するクラスに割り当て
-                UserAccount user = new UserAccount();
+                UserAccount user = new UserAccount{
+                    userId=1,
+                    userName="Testuser",
+                    email="Testuser@gmeil.com",
+                    birthday=DateTime.Now,
+                    password="pass"
+                } ;
+                
 
                 sessionRepository.SetValue<UserAccount>(user);
 

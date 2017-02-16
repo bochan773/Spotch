@@ -22,6 +22,7 @@ namespace Spotch.View
             usernameText.Text = Application.Current.Properties["username"] as string;
             emailText.Text = Application.Current.Properties["email"] as string;
             */
+            BindingText();
         }
 
         async void  BindingText()
