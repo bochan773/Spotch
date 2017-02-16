@@ -22,6 +22,15 @@
       <Label Text="{Binding position.Longitude}"
              TextColor="#888"
              FontSize="10"/>
+      <Label Text="{Binding postId}"
+             TextColor="#888"
+             FontSize="10"/>
+      <Label Text="{Binding userId}"
+             TextColor="#888"
+             FontSize="10"/>
+      <Label Text="{Binding createAt}"
+             TextColor="#888"
+             FontSize="10"/>
       
       <maps:Map x:Name="MyMap"
                 IsShowingUser="true"
