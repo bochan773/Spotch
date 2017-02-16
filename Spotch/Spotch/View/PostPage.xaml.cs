@@ -1,6 +1,7 @@
 ﻿using Spotch.Controller;
 using Spotch.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Spotch.View
 {
     public partial class PostPage : ContentPage
 	{
-        ObservableCollection<Post> _timeline = ObservableCollectionSerializable<Post>.GetInstance;
+        List<Post> _timeline = TimeLine.Collections;
         Position _current;
 
         public PostPage()
@@ -42,9 +43,9 @@ namespace Spotch.View
             if (_current.Latitude != 0 && _current.Longitude != 0 ) {
                 // Post  
                 WebSocketClient webSocket = new WebSocketClient("ws://kbckj.net:8080/socket/articles/create");                   
-                webSocket.sendPost(new Post
+                await webSocket.sendObject(new Post
                 {
-                    content = textInput.Text,
+                    message = textInput.Text,
                     latitude = _current.Latitude,
                     longitude = _current.Longitude,
                     createAt = DateTime.Now
@@ -52,12 +53,14 @@ namespace Spotch.View
 
 
                 /*
-                _timeline.Add(new Post
+                TimeLine.Collections.Add(new Post
                 {
                     message = textInput.Text,
-                    time = DateTime.Now,
-                    position = _current
-                });*/
+                    latitude = _current.Latitude,
+                    longitude = _current.Longitude,
+                    createAt = DateTime.Now
+                });
+                */
 
                 textInput.Text = "";
                 
