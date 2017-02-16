@@ -40,11 +40,7 @@ namespace Spotch.View
                 bool check = IsValidMailAddress(mail);
                 if (check)
                 {
-
-                    //１発でクラスにあてはめれるようなものがあればいいな…
-                    //ua = UserEntry.BindingContext as UserAccount;
-                    //ua.birthday = birth;
-                    //これでうまくいきそうだけどbirthdayのbindingが分からない？
+                    
 
                     Console.WriteLine("uaの内容" + ua.username + "::" + ua.password + "::" + ua.email + "::" + ua.birthday);
 
@@ -66,8 +62,8 @@ namespace Spotch.View
                     }
 
                     await this.DisplayAlert("Success", "アカウント作成成功", "はい");
-                    //Application.Current.MainPage = new MainPage();
                     Application.Current.MainPage = new MainPage();
+                    //Application.Current.MainPage = new UserProfilePage();
                 }
                 else
                 {

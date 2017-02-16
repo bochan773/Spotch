@@ -4,17 +4,17 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Spotch.View.SignupPage">
   <ContentPage.Content>
-    <StackLayout VerticalOptions="Center" Padding="20" x:Name="UserEntry">
+    <StackLayout VerticalOptions="Center" Padding="20">
       <Label Text="Welcome to Spotch!" FontSize="30" Margin="0,20,0,0" />
       <Label Text="Creat a new account" FontSize="20" Margin="0,0,0,20" />
       <Label Text="UserName" />
-      <Entry Text="{Binding username}" x:Name="username" Keyboard="Url" />
+      <Entry Text="" x:Name="username" Keyboard="Url" />
 
       <Label Text="Password" />
-      <Entry Text="{Binding password}" IsPassword="true" x:Name="password" />
+      <Entry Text="" IsPassword="true" x:Name="password" />
 
       <Label Text="Email" />
-      <Entry Text="{Binding email}" x:Name="email"  Keyboard="Email" />
+      <Entry Text="" x:Name="email"  Keyboard="Email" />
 
       <Label Text="Birthday" />
       <!--<Entry x:Name="birthdayEntry"  Keyboard="Numeric" />-->

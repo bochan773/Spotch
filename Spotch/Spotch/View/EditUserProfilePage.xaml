@@ -10,7 +10,7 @@
 
   <ContentPage.Content>
     <ScrollView>
-      <StackLayout>
+      <StackLayout x:Name="user">
         <AbsoluteLayout BackgroundColor="#ffffff">
           <Image Source="UserProfileBackground.jpg"
                  Aspect="AspectFill"
