@@ -11,10 +11,10 @@
   <ContentPage.Content>
     <ScrollView>
       <StackLayout x:Name="user">
-        <AbsoluteLayout BackgroundColor="#ffffff">
+        <AbsoluteLayout >
           <Image Source="UserProfileBackground.jpg"
                  Aspect="AspectFill"
-                 AbsoluteLayout.LayoutBounds="0,0,1,100"
+                 AbsoluteLayout.LayoutBounds="0,0,1,200"
                  AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
 
           <Image Source="Usericon_test.jpg"
@@ -22,9 +22,8 @@
                  AbsoluteLayout.LayoutFlags="XProportional"/>
 
           <Label Text="{Binding username}"
-                 FontAttributes="Bold"
-                 FontSize="26"
-                 TextColor="#333"
+                 FontSize="32"
+                 TextColor="#fff"
                  HorizontalTextAlignment="Center"
                  AbsoluteLayout.LayoutBounds="0.5,140,1,40"
                  AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"

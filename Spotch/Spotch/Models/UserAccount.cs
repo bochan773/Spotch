@@ -9,12 +9,12 @@ namespace Spotch.Models
     [JsonObject]
     class UserAccount
     {
-        [JsonProperty(PropertyName = "userid")]
-        public long user_id { set; get; }
-        [JsonProperty(PropertyName = "pass")]
+        [JsonProperty(PropertyName = "userId")]
+        public long userId { set; get; }
+        [JsonProperty(PropertyName = "password")]
         public string password { set; get; }
-        [JsonProperty(PropertyName = "username")]
-        public string username { set; get; }
+        [JsonProperty(PropertyName = "userName")]
+        public string userName { set; get; }
         [JsonProperty(PropertyName = "birthday")]
         public DateTime birthday { set; get; }
         [JsonProperty(PropertyName = "email")]
