@@ -10,7 +10,7 @@
 
   <ContentPage.Content>
     <ScrollView>
-      <StackLayout>
+      <StackLayout x:Name="user">
         <AbsoluteLayout BackgroundColor="#ffffff">
           <Image Source="UserProfileBackground.jpg"
                  Aspect="AspectFill"
@@ -28,16 +28,16 @@
                  HorizontalTextAlignment="Center"
                  AbsoluteLayout.LayoutBounds="0.5,140,1,40"
                  AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
-                 x:Name="usernameText" />
+                 x:Name="username" />
 
         </AbsoluteLayout>
 
         <StackLayout>
           <Label Text="Birthday"/>
-          <Label Text="{Binding birthday}" x:Name="birthdayEntry"/>
+          <Label Text="{Binding birthday,StringFormat=yyyy-MM-dd}" x:Name="birthday"/>
           
           <Label Text="email"/>
-          <Label Text="{Binding email}" x:Name="emailEntry"/>
+          <Label Text="{Binding email}" x:Name="email"/>
           
           <!-- ↓端末内のユーザーデータ消す用に設置したログアウトボタン↓ -->
           <Button x:Name="LogoutBtn"

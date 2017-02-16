@@ -12,18 +12,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\ApplicationProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\GeoManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\ISessionRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\MapManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\WebSocketClient2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controller\WebSocketClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CustomDateTimeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\MyViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObjectToPostConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StringToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UIColorModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserAccount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\AcceptableUsePolicyPage.xaml.cs">
+      <DependentUpon>AcceptableUsePolicyPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EditUserProfilePage.xaml.cs">
       <DependentUpon>EditUserProfilePage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -140,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\AcceptableUsePolicyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -4,24 +4,21 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Spotch.View.SignupPage">
   <ContentPage.Content>
-    <StackLayout VerticalOptions="Center">
-      <Label Text="Welcome to Spotch!" FontSize="30" Margin="20" />
-      <Label Text="Creat a new account" FontSize="20" Margin="20" />
+    <StackLayout VerticalOptions="Center" Padding="20" x:Name="UserEntry">
+      <Label Text="Welcome to Spotch!" FontSize="30" Margin="0,20,0,0" />
+      <Label Text="Creat a new account" FontSize="20" Margin="0,0,0,20" />
       <Label Text="UserName" />
-      <Entry x:Name="usernameEntry" Keyboard="Url" />
-
-      <Label Text="UserId" />
-      <Entry x:Name="useridEntry" Keyboard="Url" />
+      <Entry Text="{Binding username}" x:Name="username" Keyboard="Url" />
 
       <Label Text="Password" />
-      <Entry IsPassword="true" x:Name="passwordEntry" />
+      <Entry Text="{Binding password}" IsPassword="true" x:Name="password" />
 
       <Label Text="Email" />
-      <Entry x:Name="emailEntry"  Keyboard="Email" />
+      <Entry Text="{Binding email}" x:Name="email"  Keyboard="Email" />
 
       <Label Text="Birthday" />
       <!--<Entry x:Name="birthdayEntry"  Keyboard="Numeric" />-->
-      <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" x:Name="birthdayEntry">
+      <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" x:Name="birthday">
          <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
          <DatePicker.MinimumDate>
             <sys:DateTime x:FactoryMethod="Parse">
@@ -39,11 +36,13 @@
          </DatePicker.MaximumDate>
       </DatePicker>
 
+      <Button Text="利用規約" Clicked="AUPTap" BackgroundColor="White" />
+      <Label Text="※必ず読んでください" />
+      
       <Label Text="{Binding err}"
              TextColor="#ff7c7c" />
 
-      <Button Text="Sign up"
-              Clicked="SignupBtnClicked" />
+      <Button Text="Sign up" Clicked="SignupBtnClicked" />
 
     </StackLayout>
   </ContentPage.Content>

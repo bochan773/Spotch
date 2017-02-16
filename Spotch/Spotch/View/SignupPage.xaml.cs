@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Spotch.Controller;
+using Spotch.Models;
+using System;
 
 using Xamarin.Forms;
 
@@ -10,31 +8,72 @@ namespace Spotch.View
 {
 	public partial class SignupPage : ContentPage
 	{
-		public SignupPage ()
+        private ApplicationProperties sessionRepository = null;
+
+        public SignupPage ()
 		{
 			InitializeComponent ();
-		}
-        void SignupBtnClicked(object sender, EventArgs args)
+
+            //sessionRepository.SetValue<UserAccount>(new UserAccount());
+            sessionRepository = new ApplicationProperties();
+        }
+
+        async void SignupBtnClicked(object sender, EventArgs args)
         {
-            string username = usernameEntry.Text;
-            string userid = useridEntry.Text;
-            string password = passwordEntry.Text;
-            string email = emailEntry.Text;
-            DateTime birthday = birthdayEntry.Date;
+            
+            string uname = username.Text;
+            string pass = password.Text;
+            string mail = email.Text;
+            DateTime birth = birthday.Date;
+            
+            //ユーザー情報が全部の項目入力されているかチェック
+            if (uname.Length != 0 && pass.Length != 0 && mail.Length != 0)
+            {   
+                //入力されていたらそのデータを取得してUserクラスを作る
+                UserAccount ua = new UserAccount();
+                
+                ua.username = uname;
+                ua.password = pass;
+                ua.birthday = birth;
+                ua.email = mail;
 
-            //テスト用にユーザーIDとpassは固定
-            if (username.Length != 0 && password.Length != 0 && email.Length != 0 && userid.Length != 0)
-            {
-                this.DisplayAlert("Success", "アカウント作成成功", "はい");
-                this.BindingContext = new { err = "" };
+                bool check = IsValidMailAddress(mail);
+                if (check)
+                {
 
-                Application.Current.Properties["userid"] = userid;
-                Application.Current.Properties["pass"] = password;
-                Application.Current.Properties["username"] = username;
-                Application.Current.Properties["birthday"] = birthday;
-                Application.Current.Properties["email"] = email;
+                    //１発でクラスにあてはめれるようなものがあればいいな…
+                    //ua = UserEntry.BindingContext as UserAccount;
+                    //ua.birthday = birth;
+                    //これでうまくいきそうだけどbirthdayのbindingが分からない？
 
-                Application.Current.MainPage = new MainPage();
+                    Console.WriteLine("uaの内容" + ua.username + "::" + ua.password + "::" + ua.email + "::" + ua.birthday);
+
+                    //ここに通信処理
+                    //アカウント作成依頼
+                    //通信に成功した場合、サーバから返却されたユーザーIDと共に端末内にユーザー情報保存
+
+                    this.sessionRepository.SetValue<UserAccount>(ua);
+
+                    bool flg = await this.sessionRepository.SaveAsync();
+
+                    if (flg)
+                    {
+                        Console.WriteLine("Saveされたよ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("失敗じゃないかな");
+                    }
+
+                    await this.DisplayAlert("Success", "アカウント作成成功", "はい");
+                    //Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new MainPage();
+                }
+                else
+                {
+                    this.BindingContext = new { err = "メールアドレスを正しく入力してください。" };
+                }
+
             }
             else
             {
@@ -43,6 +82,40 @@ namespace Spotch.View
             }
 
 
+        }
+
+        /// <summary>
+        /// 指定された文字列がメールアドレスとして正しい形式か検証する
+        /// </summary>
+        /// <param name="mail">検証する文字列</param>
+        /// <returns>正しい時はTrue。正しくない時はFalse。</returns>
+        private bool IsValidMailAddress(string mail)
+        {
+            try
+            {
+                System.Net.Mail.MailAddress a = new System.Net.Mail.MailAddress(mail);
+            }
+            catch (FormatException e)
+            {
+                return false;
+            }
+            return true;
+        } 
+
+        //利用規約ページをモーダルで出す
+        void AUPTap(object sender, EventArgs args)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                try
+                {
+                    await Navigation.PushModalAsync(new AcceptableUsePolicyPage(), false);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            });
         }
     }
 }

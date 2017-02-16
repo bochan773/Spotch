@@ -22,5 +22,10 @@ namespace Spotch.Controller
         //セッションデータ保存
         Task<bool> SaveAsync();
 
+        //端末内にユーザーID保存
+        void SaveID(string value);
+
+        //端末内ユーザーID取得
+        string LoadID();
     }
 }

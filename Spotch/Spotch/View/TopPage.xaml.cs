@@ -20,11 +20,13 @@ namespace Spotch.View
         private void LoginBtn_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new LoginPage();
+            //Navigation.PushAsync(new LoginPage(), true);
         }
 
         private void SignupBtn_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new SignupPage();
+            //Navigation.PushAsync(new SignupPage(), true);
         }
     }
 }

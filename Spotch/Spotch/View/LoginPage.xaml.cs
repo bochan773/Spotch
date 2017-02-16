@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Spotch.Controller;
+using Spotch.Models;
+using System;
 
 using Xamarin.Forms;
 
@@ -10,59 +8,58 @@ namespace Spotch.View
 {
 	public partial class LoginPage : ContentPage
 	{
-		public LoginPage ()
+
+        public LoginPage ()
 		{
 			InitializeComponent ();
-
-            if (Application.Current.Properties.ContainsKey("userid"))
-            {
-                var userid = Application.Current.Properties["userid"] as string;
-                var pass = Application.Current.Properties["pass"] as string;
-                // do something with id
-
-                useridEntry.Text = userid;
-                passwordEntry.Text = pass;
-            }
         }
+
+
         void LoginBtnClicked(object sender, EventArgs args)
         {
-            string userid = useridEntry.Text;
+            
+            string email = emailEntry.Text;
             string password = passwordEntry.Text;
-
-            //テスト用にユーザーIDとpassは固定
-            if (userid == "inada" && password == "pass")
+            
+            //情報が入力されているか確認
+            if (email.Length!=0 && password.Length!=0)
             {
                 //this.DisplayAlert("Success", "ログイン成功", "はい");
-                this.BindingContext = new { err = "" };
-                
-                
-                Application.Current.Properties["userid"] = userid;
-                Application.Current.Properties["pass"] = password;
-                Application.Current.Properties["username"] = "Inada Natsumi";
-                Application.Current.Properties["birthday"] = "1995/09/06";
-                Application.Current.Properties["email"] = "xxx@xx.xx.xx";
 
-                Application.Current.MainPage = new MainPage();
-            }
-            else if (userid == "doi" && password == "pass")
-            {
-                //テスト用 本番ではいらないelseif
-                this.BindingContext = new { err = "" };
+                //-------ここで通信処理-------
+                //ユーザー情報と位置情報を送る
 
-                Application.Current.Properties["userid"] = userid;
-                Application.Current.Properties["pass"] = password;
-                Application.Current.Properties["username"] = "Doi Kosuke";
-                Application.Current.Properties["birthday"] = "1995/07/03";
-                Application.Current.Properties["email"] = "yyy@yy.yy.yy";
+                //テスト用のnew
+                UserAccount us = new UserAccount();
+                us.user_id = 24392;
 
-                Application.Current.MainPage = new MainPage();
+                //ユーザーが存在するか確認
+                if (us!=null)
+                {
+                    //通信成功でユーザー認証成功したとき、タイムラインページに飛ぶ
+
+                    this.BindingContext = new { err = "" };
+                    Application.Current.MainPage = new MainPage();
+                }
+                else
+                {
+                    this.BindingContext = new { err = "ユーザーが存在しないか、パスワードが間違っています。" };
+                }
             }
             else
             {
-                this.BindingContext = new { err = "ユーザーが存在しないか、パスワードが間違っています。" };
+                //this.BindingContext = new { err = "ユーザーが存在しないか、パスワードが間違っています。" };
+                this.BindingContext = new { err = "ユーザー情報を入力してください。" };
             }
+            
 
+            //メールアドレスとパスワードでログイン
+            //サーバーから返ってきたユーザー情報から、IDを端末内に保存
 
+            
+            this.DisplayAlert("Error!", "現在ログイン機能は使えませんSignUpから入ってください", "はい");
+            Application.Current.MainPage = new TopPage();
+            
         }
     }
 }

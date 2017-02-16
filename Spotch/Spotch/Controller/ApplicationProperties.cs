@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Spotch.Controller
 {
-    class ApplicationProperties : ISessionRepository
+    public class ApplicationProperties : ISessionRepository
     {
         //データを設定
         public void SetValue<T>(T value) where T : class
         {
-            App.Current.Properties[typeof(T).FullName] = value;
+            Application.Current.Properties[typeof(T).FullName] = value;
+            Application.Current.SavePropertiesAsync();
         }
 
         //データを取得
         public T GetValue<T>() where T : class
         {
-            if (!App.Current.Properties.ContainsKey(typeof(T).FullName))
+            if (!Application.Current.Properties.ContainsKey(typeof(T).FullName))
             {
                 return null;
             }
-            return App.Current.Properties[typeof(T).FullName] as T;
+            return Application.Current.Properties[typeof(T).FullName] as T;
         }
 
         //初期化
@@ -26,7 +28,7 @@ namespace Spotch.Controller
         {
             try
             {
-                App.Current.Properties.Clear();
+                Application.Current.Properties.Clear();
                 return true;
             }
             catch (Exception)
@@ -47,6 +49,20 @@ namespace Spotch.Controller
         {
             // 保存不要
             return Task.FromResult(true);
+        }
+    
+        public void SaveID(string value)
+        {
+            Application.Current.Properties["userid"] = value;
+        }
+
+        public string LoadID()
+        {
+            if (!Application.Current.Properties.ContainsKey("userid"))
+            {
+                return null;
+            }
+            return Application.Current.Properties["userid"] as string;
         }
     }
 }
