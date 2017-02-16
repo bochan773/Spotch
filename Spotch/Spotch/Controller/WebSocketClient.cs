@@ -32,6 +32,7 @@ namespace Spotch.Controller
             }
         }
         
+        /*
         public void sendObject(object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
@@ -39,13 +40,9 @@ namespace Spotch.Controller
             this._ws.Connect();
             this._ws.Send(json);
         }
+        */
 
-        public string getJson()
-        {
-            return _strJson;
-        }
-
-        public async Task getJson(object obj)
+        public async Task sendObject(object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
 
@@ -53,6 +50,11 @@ namespace Spotch.Controller
             this._ws.Send(json);
 
             await Task.Delay(100);
+        }
+
+        public string getJson()
+        {
+            return _strJson;
         }
         
         public void debugJson()

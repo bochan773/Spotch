@@ -2,6 +2,7 @@
 using Spotch.Controller;
 using Spotch.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -21,23 +22,22 @@ namespace Spotch.View
         public int range { set; get; }
     }
 
+
     public partial class TimeLinePage : ContentPage
 	{
         WebSocketClient _webSocket;
-        ObservableCollection<Post> _timeline = ObservableCollectionSerializable<Post>.GetInstance;
-        Xamarin.Forms.GoogleMaps.Position _p = new Xamarin.Forms.GoogleMaps.Position(0,0);
-
-        string uri = "ws://kbckj.net:8080/socket/articles/find";
+        //List<Post> _timeline = TimeLine.Collections;
+        
+        readonly string uri = "ws://kbckj.net:8080/socket/articles/find";
         private Position _current;
 
         public TimeLinePage()
         {
             InitializeComponent();
             Title = "TimeLine";
-            messageView.ItemsSource = _timeline;
-
-
+                        
             loadTimeLine();
+            messageView.ItemsSource = TimeLine.Collections;
         }
 
         /*
@@ -55,7 +55,7 @@ namespace Spotch.View
             }
         }
         */
-        async void getCurrent()
+        async Task getCurrent()
         {
             GeoManager gm = new GeoManager();
             _current = await gm.getCurrent();
@@ -64,20 +64,64 @@ namespace Spotch.View
         void loadTimeLine()
         {
             _webSocket = new WebSocketClient(uri);
+            /*
+            var jsonTest = @"[{
+                                ""postId"":1422,
+                                ""userId"":1,
+                                ""latitude"":33.8343396,
+                                ""longitude"":132.7660037,
+                                ""content"":""あいうえお"",
+                                ""createAt"":""2017-02-15 18:20:57""
+                             },
+                             {
+                                ""postId"":1424,
+                                ""userId"":2,
+                                ""latitude"":33.8343396,
+                                ""longitude"":132.7660037,
+                                ""content"":""かきくけこ"",
+                                ""createAt"":""2017-02-15 18:23:27""
+                            　},
+{
+                                ""postId"":1425,
+                                ""userId"":3,
+                                ""latitude"":33.8343396,
+                                ""longitude"":132.7660037,
+                                ""content"":""さしすせそ"",
+                                ""createAt"":""2017-02-15 18:24:27""
+                            　}
+                            ]";
+            */
 
-            getCurrent();
-            var msg = new Message
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                latitude = _current.Latitude,
-                longitude = _current.Longitude,
-                range = 5000
-            };
+                try
+                {
+                    await getCurrent();
 
-            var json = _webSocket.getJson(msg);
+                    var msg = new Message
+                    {
+                        latitude = _current.Latitude,
+                        longitude = _current.Longitude,
+                        range = 100
+                    };
 
-            // json to List<Post>
-            var result = JsonConvert.DeserializeObject<Post>(json);
-            _timeline.Add(result);
+                    await _webSocket.sendObject(msg);
+                    await Task.Run(async() =>
+                   {
+                       await Task.Delay(200);
+                       var json = _webSocket.getJson();
+                       Console.WriteLine("List<Post>Json:" + json);
+                       TimeLine.Collections = JsonConvert.DeserializeObject<List<Post>>(json);
+                       messageView.ItemsSource = TimeLine.Collections;
+                   });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            });
+
+
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs args)
