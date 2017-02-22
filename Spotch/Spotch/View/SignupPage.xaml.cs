@@ -42,7 +42,7 @@ namespace Spotch.View
                     birthday = birth,
                     email = mail
                 };
-               
+                
 
                 bool check = IsValidMailAddress(mail);
                 if (check)
@@ -83,7 +83,6 @@ namespace Spotch.View
                                 
                                 Console.WriteLine("アカウント作成に成功だよ！");
                         });
-
                         Application.Current.MainPage = new MainPage();
                     });
                     

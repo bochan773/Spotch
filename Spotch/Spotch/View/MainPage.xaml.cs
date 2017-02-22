@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Xamarin.Forms;
 
 namespace Spotch.View
@@ -8,6 +9,7 @@ namespace Spotch.View
 		public MainPage ()
 		{
 			InitializeComponent ();
-		}
+            Console.WriteLine("MainPageだよ");
+        }
 	}
 }

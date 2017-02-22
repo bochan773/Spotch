@@ -9,7 +9,7 @@
   </ContentPage.Padding>
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Load" Clicked="OnLoadTapped"/>
+    <ToolbarItem Text="   " Clicked="OnLoadTapped"/>
     <ToolbarItem Text="Post" Clicked="OnPostTapped"/>
   </ContentPage.ToolbarItems>
 
@@ -40,12 +40,14 @@
                          TextColor="#333"
                          FontSize="16"/>
                   <StackLayout Orientation="Horizontal">
+                    <!--
                     <Label Text="★"
                            TextColor="#aaa"
                            FontSize="10"/>
                     <Label Text="14"
                            TextColor="#aaa"
                            FontSize="10"/>
+                           -->
                   </StackLayout>
                 </StackLayout>
               </StackLayout>

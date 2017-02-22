@@ -22,17 +22,17 @@
              AbsoluteLayout.LayoutFlags="XProportional"/>
 
       <Label x:Name="usernameText"
-             FontSize="32"
-             TextColor="#333"
+             FontSize="28"
+             TextColor="#fff"
              HorizontalTextAlignment="Center"
-             AbsoluteLayout.LayoutBounds="0.5,150,1,40"
+             AbsoluteLayout.LayoutBounds="0.5,140,1,40"
              AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
       
       <Label x:Name="emailText"
-             FontSize="16"
-             TextColor="#333"
+             FontSize="12"
+             TextColor="#fff"
              HorizontalTextAlignment="Center"
-             AbsoluteLayout.LayoutBounds="0.5,200,1,40"
+             AbsoluteLayout.LayoutBounds="0.5,170,1,40"
              AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"/>
     </AbsoluteLayout>
     

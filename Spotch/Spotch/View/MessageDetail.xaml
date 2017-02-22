@@ -31,6 +31,12 @@
       <Label Text="{Binding createAt}"
              TextColor="#888"
              FontSize="10"/>
+      <Label Text="{Binding favorite}"
+             TextColor="#888"
+             FontSize="10"/>
+      <Label Text="{Binding favCount}"
+             TextColor="#888"
+             FontSize="10"/>
       
       <maps:Map x:Name="MyMap"
                 IsShowingUser="true"

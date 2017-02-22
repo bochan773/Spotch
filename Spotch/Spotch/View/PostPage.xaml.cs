@@ -14,11 +14,14 @@ namespace Spotch.View
 	{
         List<PostModel> _timeline = TimeLine.Collections;
         Position _current;
+        private ApplicationProperties _sessionRepository = null;
 
         public PostPage()
         {
             InitializeComponent();
             Title = "Post";
+
+            _sessionRepository = new ApplicationProperties();
 
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(35, 139), Distance.FromMiles(1)));
             getCurrent();
@@ -42,9 +45,12 @@ namespace Spotch.View
 
             if (_current.Latitude != 0 && _current.Longitude != 0 ) {
                 // Post  
-                WebSocketClient webSocket = new WebSocketClient("ws://kbckj.net:8080/socket/articles/create");                   
+                WebSocketClient webSocket = new WebSocketClient("ws://kbckj.net:8080/socket/articles/create");
+
+                var user = _sessionRepository.GetValue<UserAccount>();
                 await webSocket.sendObject(new PostModel
                 {
+                    userId = user.userId,
                     message = textInput.Text,
                     latitude = _current.Latitude,
                     longitude = _current.Longitude,

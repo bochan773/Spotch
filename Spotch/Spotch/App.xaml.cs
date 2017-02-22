@@ -57,12 +57,25 @@ namespace Spotch
             else
             {
 
+
+                // test user
+                UserAccount user = new UserAccount
+                {
+                    userId = 1,
+                    userName = "KosukeDoi",
+                    email = "kbc14a06@stu.kawahara.ac.jp",
+                    birthday = DateTime.Now,
+                    password = "pass"
+                };
+
+
+                sessionRepository.SetValue<UserAccount>(user);
                 //ユーザーIDが端末内にない場合
                 //ログイン画面(TopPage)に遷移
 
                 Console.WriteLine("-----初めてのユーザーだよ");
 
-                Application.Current.MainPage = new TopPage();
+                Application.Current.MainPage = new MainPage();
 
             }
 

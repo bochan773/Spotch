@@ -32,5 +32,9 @@ namespace Spotch.Models
         [JsonConverter(typeof(CustomDateTimeConverter))]
         public DateTime createAt { set; get; }
 
+        [JsonProperty(PropertyName = "favorite")]
+        public bool favorite { set; get; }
+        [JsonProperty(PropertyName = "favCount")]
+        public int favCount { set; get; }
     }
 }

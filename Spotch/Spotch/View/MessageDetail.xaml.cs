@@ -11,7 +11,7 @@ namespace Spotch.View
 	{
         public Position _location = new Position(35, 139);　// Default Location : Tokyo
 
-        public MessageDetail(PostModel post)
+        public MessageDetail(PostModel post) 
         {
             InitializeComponent();
             Title = "詳細";

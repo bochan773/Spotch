@@ -38,8 +38,8 @@ namespace Spotch.View
             loadTimeLine();
             messageView.ItemsSource = TimeLine.Collections;
 
-
-
+            
+            /*
             RefreshCommand = new Command( (nothing) => {
                 loadTimeLine();
                 // Binding機構経由でListViewのIsRefreshingプロパティも変更する
@@ -48,7 +48,8 @@ namespace Spotch.View
                 // ICommand.CanExecuteにもバインドしたプロパティを利用できる
                 (nothing) => !IsRefreshing
             );
-
+            */
+            
         }
 
         // ListViewを引っ張った時に実行させるコマンド
@@ -99,10 +100,11 @@ namespace Spotch.View
                     await _webSocket.sendObject(msg);
                     await Task.Run(async() =>
                    {
-                       await Task.Delay(100);
+                       await Task.Delay(200);
                        var json = _webSocket.getJson();
                        Console.WriteLine("List<Post>Json:" + json);
                        TimeLine.Collections = JsonConvert.DeserializeObject<List<PostModel>>(json);
+
                        messageView.ItemsSource = TimeLine.Collections;
                    });
                 }

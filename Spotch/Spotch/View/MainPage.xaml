@@ -4,17 +4,17 @@
              xmlns:local="clr-namespace:Spotch.View"
              x:Class="Spotch.View.MainPage">
 
-  <!--NavigationBar Color
+  <!--
+  NavigationBar Color
   <ContentPage.Resources>
     <ResourceDictionary>
       <Style TargetType="NavigationPage">
         <Setter Property="BarBackgroundColor" Value="#2000"/>
       </Style>
     </ResourceDictionary>
-  </ContentPage.Resources>-->
+  </ContentPage.Resources>
+  -->
 
-  <!--<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" 
-           HorizontalOptions="Center" />-->
 
   <MasterDetailPage.Master>
     <local:MasterPage />
